@@ -1,0 +1,161 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #080808;
+  --surface: #111111;
+  --surface2: #191919;
+  --border: rgba(255, 255, 255, 0.07);
+  --border-hover: rgba(255, 255, 255, 0.14);
+  --text: #f0ebe0;
+  --text-muted: #7a7570;
+  --text-dim: #4a4740;
+  --gold: #e8b84b;
+  --gold-dim: rgba(232, 184, 75, 0.12);
+  --gold-mid: rgba(232, 184, 75, 0.3);
+  --sage: #5a8f7b;
+  --sage-dim: rgba(90, 143, 123, 0.12);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+/* Selection */
+::selection {
+  background: var(--gold-dim);
+  color: var(--gold);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-hover);
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-dim);
+}
+
+/* Focus rings */
+:focus-visible {
+  outline: 2px solid var(--gold-mid);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Grid background pattern */
+.grid-bg {
+  background-image: linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 60px 60px;
+  -webkit-mask-image: radial-gradient(
+    ellipse 80% 60% at 50% 40%,
+    black 30%,
+    transparent 100%
+  );
+  mask-image: radial-gradient(
+    ellipse 80% 60% at 50% 40%,
+    black 30%,
+    transparent 100%
+  );
+}
+
+/* Reveal animation utility */
+.reveal {
+  @apply opacity-0 translate-y-6 transition-all duration-700 ease-out;
+}
+.reveal.visible {
+  @apply opacity-100 translate-y-0;
+}
+
+/* Skill bar animation */
+.skill-fill {
+  transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Orb animation */
+@keyframes drift {
+  from {
+    transform: translate(0, 0) scale(1);
+  }
+  to {
+    transform: translate(-30px, 40px) scale(1.05);
+  }
+}
+
+.animate-drift {
+  animation: drift 8s ease-in-out infinite alternate;
+}
+
+/* Scroll indicator */
+@keyframes scrollPulse {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scaleY(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleY(0.6) translateY(20px);
+  }
+}
+
+.animate-scroll-pulse {
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+/* Card hover accent line */
+.card-accent::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 0;
+  background: var(--gold);
+  transition: height 0.3s ease;
+  border-radius: 4px 0 0 4px;
+}
+
+.card-accent:hover::before {
+  height: 100%;
+}
+
+/* Bottom glow on cards */
+.card-glow::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--gold-mid),
+    transparent
+  );
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.card-glow:hover::after {
+  opacity: 1;
+}
