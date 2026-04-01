@@ -159,3 +159,53 @@ body {
 .card-glow:hover::after {
   opacity: 1;
 }
+
+/* ── Responsive section padding ─────────────────────────────────────── */
+/*
+   All sections use max-w-[1100px] + px-10.
+   On mobile (< 640px) we override to px-5 so content doesn't touch edges.
+*/
+@media (max-width: 640px) {
+  .max-w-\[1100px\] {
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+  }
+  header {
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+  }
+  footer {
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+  }
+}
+
+/* ── Reduced motion ─────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* ── Print styles ───────────────────────────────────────────────────── */
+@media print {
+  header,
+  footer,
+  .fixed {
+    display: none !important;
+  }
+  body {
+    background: white;
+    color: black;
+  }
+  a {
+    text-decoration: underline;
+  }
+}
