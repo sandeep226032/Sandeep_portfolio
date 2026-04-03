@@ -112,7 +112,7 @@ export default function Hero() {
           </Link>
           {/* Resume download — replace /resume.pdf with your actual resume file */}
           <a
-            href="/resume.pdf"
+            href="/resume_sandeep.pdf"
             download
             className="font-mono text-[0.78rem] tracking-[0.08em] uppercase no-underline inline-flex items-center gap-2 px-6 py-[0.85rem] rounded-[2px] border transition-all duration-200 hover:-translate-y-[1px] ml-auto"
             style={{

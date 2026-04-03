@@ -108,7 +108,7 @@ export default function Nav() {
         {/* Desktop right actions */}
         <div className="hidden md:flex items-center gap-4">
           <a
-            href="/resume.pdf"
+            href="/resume_sandeep.pdf"
             download
             className="font-mono text-[0.7rem] tracking-[0.06em] uppercase no-underline inline-flex items-center gap-2 transition-colors duration-200"
             style={{ color: "var(--text-muted)" }}
@@ -263,8 +263,9 @@ export default function Nav() {
                   Hire Me
                 </Link>
                 <a
-                  href="/resume.pdf"
-                  download
+                  href="/resume_sandeep.pdf"
+                  download="resume_sandeep.pdf"
+                   type="application/pdf"
                   className="w-full font-mono text-[0.75rem] tracking-[0.08em] uppercase no-underline text-center py-3 rounded-[2px] border inline-flex items-center justify-center gap-2 transition-all duration-200"
                   style={{ color: "var(--text-muted)", borderColor: "var(--border-hover)" }}
                   aria-label="Download resume"

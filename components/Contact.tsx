@@ -127,7 +127,7 @@ export default function Contact() {
           <div className="flex gap-3 mt-8">
             {/* Replace # with actual profile URLs */}
             <a
-              href="https://github.com/your-github" // ← REPLACE
+              href="https://github.com/sandeep226032" // ← REPLACE
               target="_blank"
               rel="noopener noreferrer"
               className="font-mono text-[0.68rem] tracking-[0.06em] uppercase no-underline border px-4 py-2 rounded-[2px] inline-flex items-center gap-2 transition-all duration-200"
@@ -148,7 +148,7 @@ export default function Contact() {
               GitHub
             </a>
             <a
-              href="https://linkedin.com/in/your-linkedin" // ← REPLACE
+              href="https://www.linkedin.com/in/sandeep-nandi-166394258/" // ← REPLACE
               target="_blank"
               rel="noopener noreferrer"
               className="font-mono text-[0.68rem] tracking-[0.06em] uppercase no-underline border px-4 py-2 rounded-[2px] inline-flex items-center gap-2 transition-all duration-200"

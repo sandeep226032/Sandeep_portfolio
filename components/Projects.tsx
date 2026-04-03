@@ -21,8 +21,8 @@ const projects = [
       "Fully responsive UI optimised for mobile and desktop",
     ] as string[],
     stack: ["React.js", "Node.js", "Express.js", "MongoDB", "JWT Auth", "REST API"],
-    githubUrl: "https://github.com/your-username/studhive", // ← replace
-    demoUrl:   "https://studhive.vercel.app" as string | null, // ← replace or null
+    githubUrl: "https://github.com/sandeep226032/StudHiveFrontend", // ← replace
+    demoUrl:   null as string | null, // ← replace or null
   },
   {
     num: "02",
@@ -32,7 +32,7 @@ const projects = [
     desc: "A transportation-focused web application addressing campus mobility, exhibited at the College Project Exhibition (2024) alongside StudHive.",
     features: [] as string[],
     stack: ["Web Development"],
-    githubUrl: "https://github.com/your-username/bus-manzil", // ← replace
+    githubUrl: "https://github.com/sandeep226032/BusManzil", // ← replace
     demoUrl: null as string | null,
   },
 ];

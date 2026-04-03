@@ -45,6 +45,8 @@ export const metadata: Metadata = {
     description:
       "Backend Developer building production-grade systems. Node.js, REST APIs, database architecture, and third-party integrations.",
     siteName: "Sandeep Nandi Portfolio",
+    url:"https://sandeep-portfolio-beryl-phi.vercel.app/",
+    images:"/Sandeep_opengraph.png"
   },
   twitter: {
     card: "summary_large_image",
