@@ -56,7 +56,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="max-w-[1100px] mx-auto px-10 py-24"
+      className="max-w-[1100px] mx-auto px-6 md:px-10 py-16 md:py-24"
       aria-labelledby="contact-heading"
     >
       <div ref={headerRef}>
@@ -93,8 +93,7 @@ export default function Contact() {
       </div>
 
       <div
-        className="grid gap-16"
-        style={{ gridTemplateColumns: "1fr 1.2fr" }}
+        className="grid grid-cols-1 md:grid-cols-[1fr_1.2fr] gap-10 md:gap-16"
       >
         {/* Contact info */}
         <motion.div
@@ -176,11 +175,11 @@ export default function Contact() {
           initial={{ opacity: 0, y: 20 }}
           animate={headerInView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.35 }}
-          className="rounded-[4px] border p-8"
+          className="rounded-[4px] border p-6 md:p-8"
           style={{ background: "var(--surface)", borderColor: "var(--border)" }}
         >
           <form onSubmit={handleSubmit} noValidate aria-label="Contact form">
-            <div className="grid grid-cols-2 gap-4 mb-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
               <div>
                 <label
                   htmlFor="name"
