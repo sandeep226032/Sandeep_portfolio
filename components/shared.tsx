@@ -45,7 +45,7 @@ export function About() {
             { k: "Company", v: "MatchBest Group" },
             { k: "Education", v: "B.Tech CS — Maharshi Dayanand University" },
             { k: "Location", v: "India" },
-            { k: "Email", v: "sandeep226032@saitm.org", href: "mailto:sandeep226032@saitm.org" },
+            { k: "Email", v: "Sandeep_226032@saitm.org", href: "mailto:Sandeep_226032@saitm.org" },
             { k: "Phone", v: "+91 9728911658", href: "tel:+919728911658" },
             { k: "Availability", v: "● Open to opportunities", gold: true },
           ].map(({ k, v, href, gold }, i, arr) => (

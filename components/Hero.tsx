@@ -21,7 +21,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="min-h-screen flex flex-col justify-center px-10 pt-32 pb-16 relative overflow-hidden"
+      className="min-h-screen flex flex-col justify-center px-6 md:px-10 pt-32 pb-16 relative overflow-hidden"
       aria-label="Hero section"
     >
       {/* Grid background */}
@@ -56,18 +56,18 @@ export default function Hero() {
         {/* Headline */}
         <motion.h1
           {...fadeUp(0.35)}
-          className="font-head font-extrabold leading-[1.0] tracking-tight mb-6"
+          className="font-head font-extrabold leading-[1.15] md:leading-[1.0] tracking-tight mb-6 text-[2.2rem] min-[412px]:text-[2.5rem] sm:text-[4rem] md:text-[5.5rem]"
           style={{
-            fontSize: "clamp(2.8rem, 6vw, 5.5rem)",
             color: "var(--text)",
           }}
         >
-          Backend systems
-          <br />
-          that{" "}
-          <span style={{ color: "var(--gold)" }}>ship</span> to
-          <br />
-          <span style={{ color: "var(--text-muted)" }}>production.</span>
+          <span className="block">Backend systems</span>
+          <span className="block">
+            that <span style={{ color: "var(--gold)" }}>ship</span> to
+          </span>
+          <span className="block" style={{ color: "var(--text-muted)" }}>
+            production.
+          </span>
         </motion.h1>
 
         {/* Description */}
@@ -87,11 +87,11 @@ export default function Hero() {
         {/* CTA buttons */}
         <motion.div
           {...fadeUp(0.65)}
-          className="flex flex-wrap gap-4 mb-16"
+          className="flex flex-col sm:flex-row flex-wrap gap-4 mb-16"
         >
           <Link
             href="#projects"
-            className="font-mono text-[0.78rem] tracking-[0.08em] uppercase no-underline inline-flex items-center gap-2 px-8 py-[0.85rem] rounded-[2px] transition-all duration-200 hover:-translate-y-[1px] hover:opacity-90"
+            className="font-mono text-[0.78rem] tracking-[0.08em] uppercase no-underline inline-flex justify-center items-center gap-2 px-8 py-[0.85rem] rounded-[2px] transition-all duration-200 hover:-translate-y-[1px] hover:opacity-90 w-full sm:w-auto"
             style={{ background: "var(--gold)", color: "var(--bg)" }}
             aria-label="View my projects"
           >
@@ -100,7 +100,7 @@ export default function Hero() {
           </Link>
           <Link
             href="#contact"
-            className="font-mono text-[0.78rem] tracking-[0.08em] uppercase no-underline inline-flex items-center gap-2 px-8 py-[0.85rem] rounded-[2px] border transition-all duration-200 hover:-translate-y-[1px]"
+            className="font-mono text-[0.78rem] tracking-[0.08em] uppercase no-underline inline-flex justify-center items-center gap-2 px-8 py-[0.85rem] rounded-[2px] border transition-all duration-200 hover:-translate-y-[1px] w-full sm:w-auto"
             style={{
               color: "var(--text)",
               borderColor: "var(--border-hover)",
@@ -114,7 +114,7 @@ export default function Hero() {
           <a
             href="/resume_sandeep.pdf"
             download
-            className="font-mono text-[0.78rem] tracking-[0.08em] uppercase no-underline inline-flex items-center gap-2 px-6 py-[0.85rem] rounded-[2px] border transition-all duration-200 hover:-translate-y-[1px] ml-auto"
+            className="font-mono text-[0.78rem] tracking-[0.08em] uppercase no-underline inline-flex justify-center items-center gap-2 px-6 py-[0.85rem] rounded-[2px] border transition-all duration-200 hover:-translate-y-[1px] sm:ml-auto w-full sm:w-auto mt-2 sm:mt-0"
             style={{
               color: "var(--text-muted)",
               borderColor: "var(--border)",

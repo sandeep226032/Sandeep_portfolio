@@ -8,7 +8,7 @@ const infoRows = [
   { k: "Company",     v: "MatchBest Group",                           href: null,  gold: false },
   { k: "Education",   v: "B.Tech CS — Maharshi Dayanand University",  href: null,  gold: false },
   { k: "Location",    v: "India",                                     href: null,  gold: false },
-  { k: "Email",       v: "sandeep226032@saitm.org", href: "mailto:sandeep226032@saitm.org", gold: false },
+  { k: "Email",       v: "Sandeep_226032@saitm.org", href: "mailto:Sandeep_226032@saitm.org", gold: false },
   { k: "Phone",       v: "+91 9728911658",           href: "tel:+919728911658",              gold: false },
   { k: "Availability",v: "● Open to opportunities", href: null,                             gold: true  },
 ];

@@ -11,7 +11,7 @@ import nodemailer from "nodemailer";
  *   SMTP_USER        — your sending email address
  *   SMTP_PASS        — your email password or app password
  *   SMTP_FROM        — display name + address, e.g. "Portfolio <you@email.com>"
- *   CONTACT_TO_EMAIL — where to receive messages, e.g. sandeep226032@saitm.org
+ *   CONTACT_TO_EMAIL — where to receive messages, e.g. Sandeep_226032@saitm.org
  */
 
 // Input validation schema (manual, no extra deps)
