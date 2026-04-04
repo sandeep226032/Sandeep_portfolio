@@ -2,6 +2,17 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import InfiniteMarquee from "@/components/ui/InfiniteMarquee";
+
+const marqueeSkillsTop = [
+  "JavaScript", "Node.js", "Express.js", "React.js", "Next.js", 
+  "TypeScript", "MongoDB", "MySQL", "PostgreSQL"
+];
+
+const marqueeSkillsBottom = [
+  "REST APIs", "System Architecture", "Git", "GitHub", "AWS", 
+  "OOP", "Data Structures", "Docker", "VS Code"
+];
 
 const barGroups = [
   {
@@ -121,7 +132,7 @@ export default function Skills() {
 
   return (
     <section id="skills" className="max-w-[1100px] mx-auto px-10 py-24" aria-labelledby="skills-heading">
-      <div ref={headerRef}>
+      <div ref={headerRef} className="mb-14">
         <motion.p initial={{ opacity: 0, y: 16 }} animate={headerInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6 }}
           className="font-mono text-[0.7rem] tracking-[0.14em] uppercase mb-3 flex items-center gap-3" style={{ color: "var(--gold)" }}>
           <span className="w-6 h-[1px] inline-block flex-shrink-0" style={{ background: "var(--gold)" }} aria-hidden="true" />
@@ -133,15 +144,29 @@ export default function Skills() {
           Technical<br /><span style={{ color: "var(--text-muted)" }}>proficiency.</span>
         </motion.h2>
         <motion.p initial={{ opacity: 0, y: 16 }} animate={headerInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-[1rem] leading-[1.75] max-w-[520px] mb-12" style={{ color: "var(--text-muted)" }}>
+          className="text-[1rem] leading-[1.75] max-w-[520px] mb-8" style={{ color: "var(--text-muted)" }}>
           Languages, frameworks, databases, and developer tools I work with regularly.
         </motion.p>
       </div>
 
+      {/* Infinite Marquees */}
+      <motion.div 
+        initial={{ opacity: 0, overflow: "hidden" }} 
+        animate={headerInView ? { opacity: 1 } : {}} 
+        transition={{ duration: 0.8, delay: 0.3 }}
+        className="w-[100vw] relative left-1/2 right-1/2 -mx-[50vw] mb-16 overflow-hidden"
+      >
+        <InfiniteMarquee items={marqueeSkillsTop} duration={40} reverse={false} />
+        <InfiniteMarquee items={marqueeSkillsBottom} duration={45} reverse={true} />
+      </motion.div>
+
+      {/* Structured Proficiency Bars */}
       <div className="grid gap-5 mb-5" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))" }}>
-        {barGroups.map((g, i) => <BarGroup key={g.group} group={g} delay={i * 0.1} />)}
+        {barGroups.map((g, i) => <BarGroup key={g.group} group={g} delay={i * 0.1 + 0.4} />)}
       </div>
-      {badgeGroups.map((g, i) => <BadgeGroup key={g.group} group={g} delay={i * 0.1} />)}
+
+      {/* Miscellaneous Skills / Badges */}
+      {badgeGroups.map((g, i) => <BadgeGroup key={g.group} group={g} delay={i * 0.1 + 0.6} />)}
     </section>
   );
 }
