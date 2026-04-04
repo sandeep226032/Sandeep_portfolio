@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Github, ExternalLink } from "lucide-react";
+import TiltSpotlightCard from "@/components/ui/TiltSpotlightCard";
 
 /* ── Data ─────────────────────────────────────────────────────────────────
    Replace githubUrl / demoUrl below with your real links.
@@ -65,53 +66,53 @@ function FeaturedCard({ project }: { project: typeof projects[0] }) {
   const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
   return (
-    <motion.article ref={ref}
+    <motion.div ref={ref}
       initial={{ opacity: 0, y: 24 }} animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      className="relative rounded-[4px] border p-8 overflow-hidden card-glow transition-all duration-300 grid gap-10 md:grid-cols-[1fr_auto] items-start"
-      style={{ background: "var(--surface)", borderColor: "var(--border)" }}
-      onMouseEnter={(e) => { const el = e.currentTarget; el.style.borderColor = "var(--gold-mid)"; el.style.transform = "translateY(-3px)"; }}
-      onMouseLeave={(e) => { const el = e.currentTarget; el.style.borderColor = "var(--border)";    el.style.transform = "translateY(0)"; }}
     >
-      <div>
-        <p className="font-mono text-[0.65rem] tracking-[0.1em] uppercase mb-2" style={{ color: "var(--text-dim)" }}>
-          {project.num} / Featured
-        </p>
-        <h3 className="font-head font-bold text-[1.4rem] tracking-tight mb-1" style={{ color: "var(--text)" }}>{project.name}</h3>
-        <p className="font-mono text-[0.7rem] tracking-[0.06em] uppercase mb-4" style={{ color: "var(--gold)" }}>{project.tagline}</p>
-        <p className="text-[0.9rem] leading-[1.75] mb-4" style={{ color: "var(--text-muted)" }}>{project.desc}</p>
-        {project.features.length > 0 && (
-          <ul className="flex flex-col gap-2 mb-5" aria-label="Key features">
-            {project.features.map((f) => (
-              <li key={f} className="text-[0.825rem] pl-4 relative list-none" style={{ color: "var(--text-muted)" }}>
-                <span className="absolute left-0 text-[0.7rem]" style={{ color: "var(--gold)" }} aria-hidden="true">▸</span>
-                {f}
-              </li>
+      <TiltSpotlightCard
+        className="p-8 grid gap-10 md:grid-cols-[1fr_auto] items-start transition-colors duration-300"
+      >
+        <div>
+          <p className="font-mono text-[0.65rem] tracking-[0.1em] uppercase mb-2" style={{ color: "var(--text-dim)" }}>
+            {project.num} / Featured
+          </p>
+          <h3 className="font-head font-bold text-[1.4rem] tracking-tight mb-1" style={{ color: "var(--text)" }}>{project.name}</h3>
+          <p className="font-mono text-[0.7rem] tracking-[0.06em] uppercase mb-4" style={{ color: "var(--gold)" }}>{project.tagline}</p>
+          <p className="text-[0.9rem] leading-[1.75] mb-4" style={{ color: "var(--text-muted)" }}>{project.desc}</p>
+          {project.features.length > 0 && (
+            <ul className="flex flex-col gap-2 mb-5" aria-label="Key features">
+              {project.features.map((f) => (
+                <li key={f} className="text-[0.825rem] pl-4 relative list-none" style={{ color: "var(--text-muted)" }}>
+                  <span className="absolute left-0 text-[0.7rem]" style={{ color: "var(--gold)" }} aria-hidden="true">▸</span>
+                  {f}
+                </li>
+              ))}
+            </ul>
+          )}
+          <div className="flex flex-wrap gap-2 pt-4 border-t mb-5" style={{ borderColor: "var(--border)" }}>
+            {project.stack.map((s) => (
+              <span key={s} className="font-mono text-[0.62rem] tracking-[0.06em] uppercase px-[0.65rem] py-[0.22rem] rounded-[2px] border bg-[var(--surface-dim)]"
+                style={{ color: "var(--sage)", borderColor: "rgba(90,143,123,0.2)" }}>{s}</span>
             ))}
-          </ul>
-        )}
-        <div className="flex flex-wrap gap-2 pt-4 border-t mb-5" style={{ borderColor: "var(--border)" }}>
-          {project.stack.map((s) => (
-            <span key={s} className="font-mono text-[0.62rem] tracking-[0.06em] uppercase px-[0.65rem] py-[0.22rem] rounded-[2px] border"
-              style={{ color: "var(--sage)", background: "var(--sage-dim)", borderColor: "rgba(90,143,123,0.2)" }}>{s}</span>
-          ))}
-        </div>
-        <Links github={project.githubUrl} demo={project.demoUrl} name={project.name} />
-      </div>
-
-      {/* Code panel */}
-      <aside className="rounded-[4px] border p-5 font-mono text-[0.72rem] leading-[1.9] self-start min-w-[200px]"
-        style={{ background: "var(--bg)", borderColor: "var(--border)", color: "var(--text-dim)" }}
-        aria-label="Stack detail">
-        <p className="font-mono text-[0.65rem] tracking-[0.1em] uppercase mb-3" style={{ color: "var(--gold)" }}>stack.json</p>
-        {[["frontend","React.js"],["backend","Node + Express"],["database","MongoDB"],["auth","JWT"],["access","RBAC"],["type","Full Stack"]].map(([k,v]) => (
-          <div key={k}>
-            <span style={{ color: "var(--sage)" }}>&quot;{k}&quot;</span>:{" "}
-            <span style={{ color: "var(--text-muted)" }}>&quot;{v}&quot;</span>,
           </div>
-        ))}
-      </aside>
-    </motion.article>
+          <Links github={project.githubUrl} demo={project.demoUrl} name={project.name} />
+        </div>
+
+        {/* Code panel */}
+        <aside className="rounded-[4px] border p-5 font-mono text-[0.72rem] leading-[1.9] self-start min-w-[200px]"
+          style={{ background: "var(--bg)", borderColor: "var(--border)", color: "var(--text-dim)" }}
+          aria-label="Stack detail">
+          <p className="font-mono text-[0.65rem] tracking-[0.1em] uppercase mb-3" style={{ color: "var(--gold)" }}>stack.json</p>
+          {[["frontend","React.js"],["backend","Node + Express"],["database","MongoDB"],["auth","JWT"],["access","RBAC"],["type","Full Stack"]].map(([k,v]) => (
+            <div key={k}>
+              <span style={{ color: "var(--sage)" }}>&quot;{k}&quot;</span>:{" "}
+              <span style={{ color: "var(--text-muted)" }}>&quot;{v}&quot;</span>,
+            </div>
+          ))}
+        </aside>
+      </TiltSpotlightCard>
+    </motion.div>
   );
 }
 
@@ -120,26 +121,24 @@ function StandardCard({ project, delay }: { project: typeof projects[0]; delay: 
   const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
   return (
-    <motion.article ref={ref}
+    <motion.div ref={ref}
       initial={{ opacity: 0, y: 24 }} animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
-      className="relative rounded-[4px] border p-8 overflow-hidden card-glow flex flex-col transition-all duration-300"
-      style={{ background: "var(--surface)", borderColor: "var(--border)" }}
-      onMouseEnter={(e) => { const el = e.currentTarget; el.style.borderColor = "var(--gold-mid)"; el.style.transform = "translateY(-3px)"; }}
-      onMouseLeave={(e) => { const el = e.currentTarget; el.style.borderColor = "var(--border)";    el.style.transform = "translateY(0)"; }}
     >
-      <p className="font-mono text-[0.65rem] tracking-[0.1em] uppercase mb-2" style={{ color: "var(--text-dim)" }}>{project.num}</p>
-      <h3 className="font-head font-bold text-[1.2rem] tracking-tight mb-1" style={{ color: "var(--text)" }}>{project.name}</h3>
-      <p className="font-mono text-[0.7rem] tracking-[0.06em] uppercase mb-4" style={{ color: "var(--gold)" }}>{project.tagline}</p>
-      <p className="text-[0.9rem] leading-[1.75] mb-5 flex-1" style={{ color: "var(--text-muted)" }}>{project.desc}</p>
-      <div className="flex flex-wrap gap-2 pt-4 border-t mb-5" style={{ borderColor: "var(--border)" }}>
-        {project.stack.map((s) => (
-          <span key={s} className="font-mono text-[0.62rem] tracking-[0.06em] uppercase px-[0.65rem] py-[0.22rem] rounded-[2px] border"
-            style={{ color: "var(--sage)", background: "var(--sage-dim)", borderColor: "rgba(90,143,123,0.2)" }}>{s}</span>
-        ))}
-      </div>
-      <Links github={project.githubUrl} demo={project.demoUrl} name={project.name} />
-    </motion.article>
+      <TiltSpotlightCard className="flex flex-col p-8 transition-colors duration-300 h-full">
+        <p className="font-mono text-[0.65rem] tracking-[0.1em] uppercase mb-2" style={{ color: "var(--text-dim)" }}>{project.num}</p>
+        <h3 className="font-head font-bold text-[1.2rem] tracking-tight mb-1" style={{ color: "var(--text)" }}>{project.name}</h3>
+        <p className="font-mono text-[0.7rem] tracking-[0.06em] uppercase mb-4" style={{ color: "var(--gold)" }}>{project.tagline}</p>
+        <p className="text-[0.9rem] leading-[1.75] mb-5 flex-1" style={{ color: "var(--text-muted)" }}>{project.desc}</p>
+        <div className="flex flex-wrap gap-2 pt-4 border-t mb-5" style={{ borderColor: "var(--border)" }}>
+          {project.stack.map((s) => (
+            <span key={s} className="font-mono text-[0.62rem] tracking-[0.06em] uppercase px-[0.65rem] py-[0.22rem] rounded-[2px] border bg-[var(--surface-dim)]"
+              style={{ color: "var(--sage)", borderColor: "rgba(90,143,123,0.2)" }}>{s}</span>
+          ))}
+        </div>
+        <Links github={project.githubUrl} demo={project.demoUrl} name={project.name} />
+      </TiltSpotlightCard>
+    </motion.div>
   );
 }
 
