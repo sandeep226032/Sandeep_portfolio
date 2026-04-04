@@ -3,6 +3,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight, Download } from "lucide-react";
+import MagneticWrapper from "@/components/ui/MagneticWrapper";
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 20 },
@@ -127,44 +128,52 @@ export default function Hero() {
         {/* CTA buttons */}
         <motion.div
           {...fadeUp(0.65)}
-          className="flex flex-col sm:flex-row flex-wrap gap-4 mb-16"
+          className="flex flex-col sm:flex-row flex-wrap gap-4 mb-16 w-full"
         >
-          <Link
-            href="#projects"
-            className="font-mono text-[0.78rem] tracking-[0.08em] uppercase no-underline inline-flex justify-center items-center gap-2 px-8 py-[0.85rem] rounded-[2px] transition-all duration-200 hover:-translate-y-[1px] hover:opacity-90 w-full sm:w-auto"
-            style={{ background: "var(--gold)", color: "var(--bg)" }}
-            aria-label="View my projects"
-          >
-            <ArrowRight size={13} aria-hidden="true" />
-            View Projects
-          </Link>
-          <Link
-            href="#contact"
-            className="font-mono text-[0.78rem] tracking-[0.08em] uppercase no-underline inline-flex justify-center items-center gap-2 px-8 py-[0.85rem] rounded-[2px] border transition-all duration-200 hover:-translate-y-[1px] w-full sm:w-auto"
-            style={{
-              color: "var(--text)",
-              borderColor: "var(--border-hover)",
-              background: "transparent",
-            }}
-            aria-label="Contact me"
-          >
-            Contact Me
-          </Link>
-          {/* Resume download — replace /resume.pdf with your actual resume file */}
-          <a
-            href="/resume_sandeep.pdf"
-            download
-            className="font-mono text-[0.78rem] tracking-[0.08em] uppercase no-underline inline-flex justify-center items-center gap-2 px-6 py-[0.85rem] rounded-[2px] border transition-all duration-200 hover:-translate-y-[1px] sm:ml-auto w-full sm:w-auto mt-2 sm:mt-0"
-            style={{
-              color: "var(--text-muted)",
-              borderColor: "var(--border)",
-              background: "transparent",
-            }}
-            aria-label="Download resume"
-          >
-            <Download size={13} aria-hidden="true" />
-            Resume
-          </a>
+          <MagneticWrapper className="w-full sm:w-auto">
+            <Link
+              href="#projects"
+              className="font-mono text-[0.78rem] tracking-[0.08em] uppercase no-underline inline-flex justify-center items-center gap-2 px-8 py-[0.85rem] rounded-[2px] transition-all duration-200 hover:opacity-90 w-full"
+              style={{ background: "var(--gold)", color: "var(--bg)" }}
+              aria-label="View my projects"
+            >
+              <ArrowRight size={13} aria-hidden="true" />
+              View Projects
+            </Link>
+          </MagneticWrapper>
+
+          <MagneticWrapper className="w-full sm:w-auto">
+            <Link
+              href="#contact"
+              className="font-mono text-[0.78rem] tracking-[0.08em] uppercase no-underline inline-flex justify-center items-center gap-2 px-8 py-[0.85rem] rounded-[2px] border transition-all duration-200 w-full"
+              style={{
+                color: "var(--text)",
+                borderColor: "var(--border-hover)",
+                background: "transparent",
+              }}
+              aria-label="Contact me"
+            >
+              Contact Me
+            </Link>
+          </MagneticWrapper>
+
+          {/* Resume download */}
+          <MagneticWrapper className="w-full sm:w-auto sm:ml-auto mt-2 sm:mt-0">
+            <a
+              href="/resume_sandeep.pdf"
+              download
+              className="font-mono text-[0.78rem] tracking-[0.08em] uppercase no-underline inline-flex justify-center items-center gap-2 px-6 py-[0.85rem] rounded-[2px] border transition-all duration-200 w-full"
+              style={{
+                color: "var(--text-muted)",
+                borderColor: "var(--border)",
+                background: "transparent",
+              }}
+              aria-label="Download resume"
+            >
+              <Download size={13} aria-hidden="true" />
+              Resume
+            </a>
+          </MagneticWrapper>
         </motion.div>
 
         {/* Stats */}
