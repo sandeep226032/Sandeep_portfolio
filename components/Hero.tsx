@@ -12,8 +12,8 @@ const fadeUp = (delay = 0) => ({
 
 const stats = [
   { num: "4+", label: "Production Systems" },
-  { num: "10+", label: "REST APIs Built" },
-  { num: "3+", label: "Third-party Integrations" },
+  { num: "20+", label: "REST APIs Built" },
+  { num: "5+", label: "Third-party Integrations" },
   { num: "2+", label: "Projects Exhibited" },
 ];
 
