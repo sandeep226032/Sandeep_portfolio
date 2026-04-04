@@ -63,7 +63,7 @@ function Links({ github, demo, name }: { github: string; demo: string | null; na
 
 /* ── Featured card (full-width, 2-column) ─────────────────────────────── */
 function FeaturedCard({ project }: { project: typeof projects[0] }) {
-  const ref = useRef<HTMLElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
   return (
     <motion.div ref={ref}
@@ -118,7 +118,7 @@ function FeaturedCard({ project }: { project: typeof projects[0] }) {
 
 /* ── Standard card ────────────────────────────────────────────────────── */
 function StandardCard({ project, delay }: { project: typeof projects[0]; delay: number }) {
-  const ref = useRef<HTMLElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
   return (
     <motion.div ref={ref}
