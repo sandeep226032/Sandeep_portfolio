@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight, Download } from "lucide-react";
 
@@ -10,6 +10,30 @@ const fadeUp = (delay = 0) => ({
   transition: { duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] },
 });
 
+// Staggered variants for text reveals
+const containerVariants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.2, // Waits for the small "Available" label to show first
+    },
+  },
+};
+
+const childVariants = {
+  hidden: { opacity: 0, y: 40 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.8,
+      ease: [0.22, 1, 0.36, 1], // Same smooth ease as your existing animations
+    },
+  },
+};
+
 const stats = [
   { num: "4+", label: "Production Systems" },
   { num: "20+", label: "REST APIs Built" },
@@ -18,22 +42,33 @@ const stats = [
 ];
 
 export default function Hero() {
+  const { scrollY } = useScroll();
+  // We use useTransform to map the scroll position to Y offsets.
+  // Parallax: moving up slower or faster than the rest of the page.
+  const yOrb = useTransform(scrollY, [0, 800], [0, 300]); // Moves down relative to scroll
+  const yGrid = useTransform(scrollY, [0, 800], [0, -150]); // Moves up faster
+
   return (
     <section
       id="hero"
       className="min-h-screen flex flex-col justify-center px-6 md:px-10 pt-32 pb-16 relative overflow-hidden"
       aria-label="Hero section"
     >
-      {/* Grid background */}
-      <div className="absolute inset-0 grid-bg pointer-events-none" aria-hidden="true" />
+      {/* Grid background with Parallax */}
+      <motion.div 
+        className="absolute inset-0 grid-bg pointer-events-none" 
+        style={{ y: yGrid }}
+        aria-hidden="true" 
+      />
 
-      {/* Ambient orb */}
-      <div
+      {/* Ambient orb with Parallax */}
+      <motion.div
         className="absolute w-[500px] h-[500px] rounded-full pointer-events-none animate-drift"
         style={{
           background: "radial-gradient(circle, rgba(232,184,75,0.07) 0%, transparent 70%)",
           top: "-10%",
           right: "-8%",
+          y: yOrb, // Parallax property linked to scroll
         }}
         aria-hidden="true"
       />
@@ -55,19 +90,24 @@ export default function Hero() {
 
         {/* Headline */}
         <motion.h1
-          {...fadeUp(0.35)}
+          variants={containerVariants}
+          initial="hidden"
+          animate="show"
           className="font-head font-extrabold leading-[1.15] md:leading-[1.0] tracking-tight mb-6 text-[2.2rem] min-[412px]:text-[2.5rem] sm:text-[4rem] md:text-[5.5rem]"
           style={{
             color: "var(--text)",
           }}
         >
-          <span className="block">Backend systems</span>
-          <span className="block">
+          {/* Each line animates independently */}
+          <motion.span variants={childVariants} className="block">
+            Backend systems
+          </motion.span>
+          <motion.span variants={childVariants} className="block">
             that <span style={{ color: "var(--gold)" }}>ship</span> to
-          </span>
-          <span className="block" style={{ color: "var(--text-muted)" }}>
+          </motion.span>
+          <motion.span variants={childVariants} className="block" style={{ color: "var(--text-muted)" }}>
             production.
-          </span>
+          </motion.span>
         </motion.h1>
 
         {/* Description */}
