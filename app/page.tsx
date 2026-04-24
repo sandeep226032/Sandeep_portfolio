@@ -1,4 +1,7 @@
+"use client";
+
 import Nav from "@/components/Nav";
+import { useAnalytics } from "@/hooks/useAnalytics";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Experience from "@/components/Experience";
@@ -9,7 +12,9 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ui/ScrollToTop";
 
-export default function Home() {
+export default function Page() {
+  useAnalytics(); // ✅ inside component
+
   return (
     <>
       <Nav />

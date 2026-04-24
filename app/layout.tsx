@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Syne, DM_Mono, Figtree } from "next/font/google";
 import CustomCursor from "@/components/ui/CustomCursor";
+import CookieConsent from "@/components/ui/CookieConsent";
 import "./globals.css";
 
 const syne = Syne({
@@ -66,6 +67,7 @@ export default function RootLayout({
     <html lang="en" className={`${syne.variable} ${dmMono.variable} ${figtree.variable}`}>
       <body className="bg-bg text-text font-body antialiased">
         <CustomCursor />
+        <CookieConsent />
         {children}
       </body>
     </html>
