@@ -1,12 +1,12 @@
 "use client";
-import { useEffect, useState } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import dynamic from 'next/dynamic';
 
 const LineChart = dynamic(() => import('../../../components/admin/LineChart'), { ssr: false });
 const PieChart = dynamic(() => import('../../../components/admin/PieChart'), { ssr: false });
 
-export default function DashboardPage() {
+function DashboardContent() {
   const [data, setData] = useState<any>(null);
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
@@ -60,5 +60,13 @@ export default function DashboardPage() {
         </ul>
       </div>
     </div>
+  );
+}
+
+export default function DashboardPage() {
+  return (
+    <Suspense fallback={<div style={{ padding: 32 }}>Loading dashboard...</div>}>
+      <DashboardContent />
+    </Suspense>
   );
 }
