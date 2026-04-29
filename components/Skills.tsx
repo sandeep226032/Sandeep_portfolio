@@ -30,7 +30,11 @@ const barGroups = [
       { name: "Node.js",         level: "Core",     pct: 88 },
       { name: "Express.js",      level: "Core",     pct: 85 },
       { name: "REST API Design", level: "Strong",   pct: 85 },
-      { name: "Next.js",         level: "Learning", pct: 60 },
+      { name: "SSE",             level: "Implemented",pct: 75 },
+      { name: "Prisma",          level: "Strong",     pct: 80 },
+      { name: "Mongoose",        level: "Strong", pct: 85 },
+      { name: "Websockets",      level: "Learning", pct: 60 },
+    
     ],
   },
   {
@@ -47,11 +51,11 @@ const barGroups = [
 const badgeGroups = [
   {
     group: "Frontend",
-    items: ["React.js", "HTML", "CSS", "MERN Stack", "Responsive UI", "REST integration"],
+    items: ["React.js", "HTML", "CSS", "next.js", "Responsive UI", "REST integration"],
   },
   {
     group: "Developer Tools",
-    items: ["Git", "GitHub", "VS Code", "Postman", "Delhivery API", "Meta API", "Apollo", "OOP", "Data Structures"],
+    items: ["Git", "GitHub", "VS Code", "Postman", "Delhivery API", "Meta API", "Apollo", "OOP", "Data Structures","S3","R2","Docker","Vercel"],
   },
 ];
 

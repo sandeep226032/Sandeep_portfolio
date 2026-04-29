@@ -32,8 +32,11 @@ const systems = [
       "Developed outbound and inbound communication integrations for the CRM",
       "Integrated Meta and Apollo platforms for lead management and outreach workflows",
       "Researched and proposed scalable multi-tenant database architecture for SaaS delivery",
+      "Implement Notification service using SSE(Server Sent Events) and EventBus",
+      "Implemented role-based access control (RBAC) for secure multi-user CRM access",
+      "Implemented  Event-based architecture using SSE and EventBus for real-time updates and notifications",
     ],
-    chips: ["Meta API", "Apollo", "PostgreSQL", "SaaS Architecture"],
+    chips: ["Meta API", "Apollo", "PostgreSQL", "SaaS Architecture","SSE(Serever Sent Events)","Inbound Voice Bot","Outbound Voice Bot"],
   },
   {
     name: "HRMS",
@@ -57,7 +60,7 @@ function ExpCard({ system, delay }: { system: typeof systems[0]; delay: number }
       initial={{ opacity: 0, y: 24 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
-      className="relative overflow-hidden rounded-[4px] border p-7 transition-all duration-300 card-accent group cursor-default"
+      className="relative flex flex-col h-full w-full overflow-hidden rounded-[4px] border p-7 transition-all duration-300 card-accent group cursor-default"
       style={{
         background: "var(--surface)",
         borderColor: "var(--border)",
@@ -84,7 +87,7 @@ function ExpCard({ system, delay }: { system: typeof systems[0]; delay: number }
         {system.type}
       </p>
 
-      <ul className="flex flex-col gap-3 mb-5">
+      <ul className="flex flex-col flex-grow gap-3 mb-5">
         {system.bullets.map((b) => (
           <li
             key={b}
@@ -103,7 +106,7 @@ function ExpCard({ system, delay }: { system: typeof systems[0]; delay: number }
         ))}
       </ul>
 
-      <div className="flex flex-wrap gap-[6px]">
+      <div className="flex flex-wrap mt-auto gap-[6px]">
         {system.chips.map((c) => (
           <span
             key={c}
@@ -211,13 +214,13 @@ export default function Experience() {
 
       {/* System cards grid */}
       <div
-        className="grid gap-5"
+        className="grid gap-5 items-stretch"
         style={{ gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))" }}
         role="list"
         aria-label="Systems worked on"
       >
         {systems.map((s, i) => (
-          <div key={s.name} role="listitem">
+          <div key={s.name} role="listitem" className="flex">
             <ExpCard system={s} delay={i * 0.1} />
           </div>
         ))}
