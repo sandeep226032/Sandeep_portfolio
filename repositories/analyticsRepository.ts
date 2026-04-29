@@ -40,3 +40,21 @@ export async function getPageViewsOverTime(days: number) {
   `, [days]);
   return rows as any[];
 }
+
+export async function getRecentDetailedViews(limit: number = 50) {
+  const [rows] = await pool.query(`
+    SELECT 
+      pv.page_path,
+      pv.visited_at,
+      v.device_type,
+      v.browser,
+      v.os,
+      v.city,
+      v.country
+    FROM page_views pv
+    JOIN visitors v ON pv.visitor_id = v.id
+    ORDER BY pv.visited_at DESC
+    LIMIT ?
+  `, [limit]);
+  return rows as any[];
+}

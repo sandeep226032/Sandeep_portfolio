@@ -1,7 +1,7 @@
-import { getTotalVisitors, getUniqueVisitorsToday, getTopPages, getDeviceSpread, getBrowserSpread, getCountrySpread, getPageViewsOverTime } from '../repositories/analyticsRepository';
+import { getTotalVisitors, getUniqueVisitorsToday, getTopPages, getDeviceSpread, getBrowserSpread, getCountrySpread, getPageViewsOverTime, getRecentDetailedViews } from '../repositories/analyticsRepository';
 
 export async function getAnalyticsData() {
-  const [totalVisitors, uniqueToday, topPages, deviceSpread, browserSpread, countrySpread, pageViewsOverTime] = await Promise.all([
+  const [totalVisitors, uniqueToday, topPages, deviceSpread, browserSpread, countrySpread, pageViewsOverTime, recentViews] = await Promise.all([
     getTotalVisitors(),
     getUniqueVisitorsToday(),
     getTopPages(),
@@ -9,6 +9,7 @@ export async function getAnalyticsData() {
     getBrowserSpread(),
     getCountrySpread(),
     getPageViewsOverTime(30), // last 30 days
+    getRecentDetailedViews(50), // last 50 visits
   ]);
   return {
     totalVisitors,
@@ -18,5 +19,6 @@ export async function getAnalyticsData() {
     browserSpread,
     countrySpread,
     pageViewsOverTime,
+    recentViews,
   };
 }
