@@ -1,27 +1,27 @@
 import type { Metadata } from "next";
-import { Syne, DM_Mono, Figtree } from "next/font/google";
+import { Sora, Manrope, JetBrains_Mono } from "next/font/google";
 import CustomCursor from "@/components/ui/CustomCursor";
 import CookieConsent from "@/components/ui/CookieConsent";
 import "./globals.css";
 
-const syne = Syne({
+const sora = Sora({
   subsets: ["latin"],
   weight: ["400", "600", "700", "800"],
-  variable: "--font-syne",
+  variable: "--font-head",
   display: "swap",
 });
 
-const dmMono = DM_Mono({
+const manrope = Manrope({
   subsets: ["latin"],
-  weight: ["300", "400", "500"],
-  variable: "--font-dm-mono",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-body",
   display: "swap",
 });
 
-const figtree = Figtree({
+const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
-  variable: "--font-figtree",
+  weight: ["400", "500", "600"],
+  variable: "--font-mono",
   display: "swap",
 });
 
@@ -64,7 +64,28 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${syne.variable} ${dmMono.variable} ${figtree.variable}`}>
+    <html
+      lang="en"
+      className={`${sora.variable} ${manrope.variable} ${jetbrainsMono.variable}`}
+      suppressHydrationWarning
+    >
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function () {
+                try {
+                  var stored = localStorage.getItem("portfolio_theme");
+                  var system = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+                  document.documentElement.dataset.theme = stored || system;
+                } catch (_) {
+                  document.documentElement.dataset.theme = "dark";
+                }
+              })();
+            `,
+          }}
+        />
+      </head>
       <body className="bg-bg text-text font-body antialiased">
         <CustomCursor />
         <CookieConsent />

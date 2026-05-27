@@ -40,7 +40,7 @@ export default function NotFound() {
       <Link
         href="/"
         className="font-mono text-[0.78rem] tracking-[0.08em] uppercase no-underline inline-flex items-center gap-2 px-8 py-[0.85rem] rounded-[2px] transition-all duration-200 hover:-translate-y-[1px] hover:opacity-90"
-        style={{ background: "var(--gold)", color: "var(--bg)" }}
+        style={{ background: "var(--accent)", color: "var(--accent-contrast)" }}
       >
         ← Back to Home
       </Link>

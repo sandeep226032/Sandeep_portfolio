@@ -10,20 +10,21 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        head: ["var(--font-syne)", "sans-serif"],
-        mono: ["var(--font-dm-mono)", "monospace"],
-        body: ["var(--font-figtree)", "sans-serif"],
+        head: ["var(--font-head)", "sans-serif"],
+        mono: ["var(--font-mono)", "monospace"],
+        body: ["var(--font-body)", "sans-serif"],
       },
       colors: {
-        bg: "#080808",
-        surface: "#111111",
-        surface2: "#191919",
-        gold: "#E8B84B",
-        sage: "#5A8F7B",
+        bg: "var(--bg)",
+        surface: "var(--surface)",
+        surface2: "var(--surface2)",
+        accent: "var(--accent)",
+        gold: "var(--gold)",
+        sage: "var(--sage)",
         text: {
-          DEFAULT: "#F0EBE0",
-          muted: "#7A7570",
-          dim: "#4A4740",
+          DEFAULT: "var(--text)",
+          muted: "var(--text-muted)",
+          dim: "var(--text-dim)",
         },
       },
       animation: {

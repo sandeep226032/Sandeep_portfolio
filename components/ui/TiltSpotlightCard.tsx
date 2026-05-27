@@ -67,7 +67,7 @@ export default function TiltSpotlightCard({
           opacity: hovered ? 1 : 0,
           background: useMotionTemplate`radial-gradient(
             400px circle at ${lightX}px ${lightY}px,
-            rgba(232, 184, 75, 0.08), 
+            var(--spotlight), 
             transparent 80%
           )`,
         }}
@@ -79,7 +79,7 @@ export default function TiltSpotlightCard({
           opacity: hovered ? 1 : 0,
           background: useMotionTemplate`radial-gradient(
             300px circle at ${lightX}px ${lightY}px,
-            rgba(232, 184, 75, 0.4), 
+            var(--spotlight-border), 
             transparent 100%
           )`,
           WebkitMask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",

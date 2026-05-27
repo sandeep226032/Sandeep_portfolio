@@ -3,19 +3,62 @@
 @tailwind utilities;
 
 :root {
-  --bg: #080808;
-  --surface: #111111;
-  --surface2: #191919;
-  --border: rgba(255, 255, 255, 0.07);
-  --border-hover: rgba(255, 255, 255, 0.14);
-  --text: #f0ebe0;
-  --text-muted: #7a7570;
-  --text-dim: #4a4740;
-  --gold: #e8b84b;
-  --gold-dim: rgba(232, 184, 75, 0.12);
-  --gold-mid: rgba(232, 184, 75, 0.3);
-  --sage: #5a8f7b;
-  --sage-dim: rgba(90, 143, 123, 0.12);
+  color-scheme: dark;
+  --bg: #090a0b;
+  --surface: #111315;
+  --surface2: #181b1e;
+  --surface-dim: rgba(255, 255, 255, 0.03);
+  --border: rgba(244, 241, 234, 0.09);
+  --border-hover: rgba(244, 241, 234, 0.18);
+  --text: #f4f1ea;
+  --text-muted: #a39b8f;
+  --text-dim: #6f675d;
+  --accent: #d6a84f;
+  --accent-dim: rgba(214, 168, 79, 0.12);
+  --accent-mid: rgba(214, 168, 79, 0.3);
+  --accent-contrast: #090a0b;
+  --sage: #4f9d85;
+  --sage-dim: rgba(79, 157, 133, 0.12);
+  --nav-bg: rgba(9, 10, 11, 0.88);
+  --nav-border: rgba(255, 255, 255, 0.06);
+  --nav-border-scrolled: rgba(255, 255, 255, 0.1);
+  --overlay: rgba(9, 10, 11, 0.6);
+  --danger: #e87070;
+  --hero-orb: rgba(214, 168, 79, 0.07);
+  --spotlight: rgba(214, 168, 79, 0.08);
+  --spotlight-border: rgba(214, 168, 79, 0.4);
+
+  /* Backward-compatible aliases for existing components. */
+  --gold: var(--accent);
+  --gold-dim: var(--accent-dim);
+  --gold-mid: var(--accent-mid);
+}
+
+[data-theme="light"] {
+  color-scheme: light;
+  --bg: #f7f4ed;
+  --surface: #fffdf8;
+  --surface2: #ece5d8;
+  --surface-dim: rgba(41, 34, 24, 0.04);
+  --border: rgba(31, 33, 31, 0.12);
+  --border-hover: rgba(31, 33, 31, 0.22);
+  --text: #1f211f;
+  --text-muted: #655f56;
+  --text-dim: #91887b;
+  --accent: #996a1f;
+  --accent-dim: rgba(153, 106, 31, 0.12);
+  --accent-mid: rgba(153, 106, 31, 0.28);
+  --accent-contrast: #fffdf8;
+  --sage: #3f7e6e;
+  --sage-dim: rgba(63, 126, 110, 0.12);
+  --nav-bg: rgba(247, 243, 234, 0.9);
+  --nav-border: rgba(31, 33, 31, 0.1);
+  --nav-border-scrolled: rgba(31, 33, 31, 0.18);
+  --overlay: rgba(31, 33, 31, 0.3);
+  --danger: #b84242;
+  --hero-orb: rgba(153, 106, 31, 0.1);
+  --spotlight: rgba(153, 106, 31, 0.08);
+  --spotlight-border: rgba(153, 106, 31, 0.28);
 }
 
 html {
@@ -30,6 +73,7 @@ body {
   background: var(--bg);
   color: var(--text);
   overflow-x: hidden;
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 /* Selection */

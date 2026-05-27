@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Download } from "lucide-react";
 import Link from "next/link";
 import { useActiveSection } from "@/hooks/useActiveSection";
+import ThemeToggle from "@/components/ui/ThemeToggle";
 
 const SECTION_IDS = ["about", "experience", "projects", "skills", "education", "contact"];
 
@@ -50,10 +51,12 @@ export default function Nav() {
         className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between transition-all duration-300"
         style={{
           padding: "1.1rem 2.5rem",
-          background: "rgba(8,8,8,0.88)",
+          background: "var(--nav-bg)",
           backdropFilter: "blur(14px)",
           WebkitBackdropFilter: "blur(14px)",
-          borderBottom: `1px solid ${scrolled ? "rgba(255,255,255,0.1)" : "rgba(255,255,255,0.06)"}`,
+          borderBottom: `1px solid ${
+            scrolled ? "var(--nav-border-scrolled)" : "var(--nav-border)"
+          }`,
         }}
       >
         {/* Logo */}
@@ -107,6 +110,8 @@ export default function Nav() {
 
         {/* Desktop right actions */}
         <div className="hidden md:flex items-center gap-4">
+          <ThemeToggle />
+
           <a
             href="/resume_sandeep.pdf"
             download
@@ -126,8 +131,8 @@ export default function Nav() {
             style={{ color: "var(--gold)", borderColor: "var(--gold-mid)", background: "transparent" }}
             onMouseEnter={(e) => {
               const el = e.currentTarget as HTMLElement;
-              el.style.background = "var(--gold)";
-              el.style.color = "var(--bg)";
+              el.style.background = "var(--accent)";
+              el.style.color = "var(--accent-contrast)";
             }}
             onMouseLeave={(e) => {
               const el = e.currentTarget as HTMLElement;
@@ -174,7 +179,7 @@ export default function Nav() {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
               className="fixed inset-0 z-40 md:hidden"
-              style={{ background: "rgba(8,8,8,0.6)", backdropFilter: "blur(4px)" }}
+              style={{ background: "var(--overlay)", backdropFilter: "blur(4px)" }}
               onClick={() => setMobileOpen(false)}
               aria-hidden="true"
             />
@@ -254,11 +259,20 @@ export default function Nav() {
                 className="px-6 py-6 border-t flex flex-col gap-3"
                 style={{ borderColor: "var(--border)" }}
               >
+                <div className="flex items-center justify-between pb-2">
+                  <span
+                    className="font-mono text-[0.65rem] tracking-[0.1em] uppercase"
+                    style={{ color: "var(--text-dim)" }}
+                  >
+                    Theme
+                  </span>
+                  <ThemeToggle />
+                </div>
                 <Link
                   href="#contact"
                   onClick={() => setMobileOpen(false)}
                   className="w-full font-mono text-[0.75rem] tracking-[0.08em] uppercase no-underline text-center py-3 rounded-[2px] transition-all duration-200"
-                  style={{ background: "var(--gold)", color: "var(--bg)" }}
+                  style={{ background: "var(--accent)", color: "var(--accent-contrast)" }}
                 >
                   Hire Me
                 </Link>
