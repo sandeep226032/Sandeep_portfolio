@@ -13,7 +13,20 @@ const infoRows = [
   { k: "Availability",v: "● Open to opportunities", href: null,                             gold: true  },
 ];
 
-const coreTags = ["Node.js", "REST APIs", "MongoDB", "MySQL", "PostgreSQL", "Express.js", "React.js"];
+const coreTags = [
+  "Node.js",
+  "FastAPI",
+  "REST APIs",
+  "LangChain",
+  "RAG",
+  "LLMs",
+  "Vector DBs",
+  "Docker",
+  "CI/CD",
+  "Auth Systems",
+  "MongoDB",
+  "PostgreSQL"
+]
 
 export default function About() {
   const ref = useRef<HTMLElement>(null);
@@ -68,24 +81,23 @@ export default function About() {
             <strong style={{ color: "var(--text)", fontWeight: 500 }}>
               Backend Developer Intern at MatchBest Group
             </strong>
-            , where I work on production-grade applications serving real users. My work spans
-            logistics platform migrations, CRM system integrations, and admin panel architecture.
+            , where I work on production-grade systems across CRM, logistics, HRMS, SaaS workflows, and admin platforms. My work focuses on scalable APIs, authentication flows, database design, and integrations used by real users.
           </p>
           <p className="text-[1rem] leading-[1.85] mb-5" style={{ color: "var(--text-muted)" }}>
             I focus on{" "}
             <strong style={{ color: "var(--text)", fontWeight: 500 }}>
               building things that work
             </strong>{" "}
-            — reliable REST APIs, clean database schemas, and integrations with third-party
-            platforms like Shiprocket, Delhivery, Meta, and Apollo.
+            — I also build AI-powered backend applications using FastAPI, LangChain, RAG, LLMs, and vector databases, connecting intelligent workflows with reliable API and data layers.
           </p>
           <p className="text-[1rem] leading-[1.85] mb-8" style={{ color: "var(--text-muted)" }}>
-            Currently pursuing a{" "}
+            {/* Currently pursuing a{" "}
             <strong style={{ color: "var(--text)", fontWeight: 500 }}>
               B.Tech in Computer Science
             </strong>{" "}
             at Maharshi Dayanand University (2022–2026), I bring a blend of academic grounding
-            and real-world engineering practice to every project.
+            and real-world engineering practice to every project. */}
+            Beyond APIs, I work with SMTP and network programming concepts, Docker, CI/CD workflows, and secure backend foundations that make systems easier to deploy, maintain, and scale.
           </p>
 
           <div

@@ -11,7 +11,7 @@ const marqueeSkillsTop = [
 
 const marqueeSkillsBottom = [
   "REST APIs", "System Architecture", "Git", "GitHub", "AWS", 
-  "OOP", "Data Structures", "Docker", "VS Code"
+  "OOP", "Data Structures", "Docker", "LangChain", "RAG", "Vector Databases"
 ];
 
 const barGroups = [
@@ -34,6 +34,8 @@ const barGroups = [
       { name: "Prisma",          level: "Strong",     pct: 80 },
       { name: "Mongoose",        level: "Strong", pct: 85 },
       { name: "Websockets",      level: "Learning", pct: 60 },
+      {name:"SMTP & Network Programming", level: "Implemented", pct: 70},
+      {name: "FastAPI",         level: "Core", pct: 80}
     
     ],
   },
@@ -50,12 +52,16 @@ const barGroups = [
 
 const badgeGroups = [
   {
-    group: "Frontend",
-    items: ["React.js", "HTML", "CSS", "next.js", "Responsive UI", "REST integration"],
+    group: "AI / LLM",
+    items: ["LangChain", "RAG", "LLM Integration", "Vector Databases", "Groq API"],
   },
   {
-    group: "Developer Tools",
-    items: ["Git", "GitHub", "VS Code", "Postman", "Delhivery API", "Meta API", "Apollo", "OOP", "Data Structures","S3","R2","Docker","Vercel"],
+    group: "Frontend",
+    items: ["React.js", "HTML", "CSS", "next.js", "Responsive UI", "REST integration","Streamlit"],
+  },
+  {
+    group: "DevOps & Tools",
+    items: ["Docker", "CI/CD", "Git", "GitHub", "Postman", "VS Code", "Vercel", "S3", "R2"],
   },
 ];
 

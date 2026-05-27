@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Sora, Manrope, JetBrains_Mono } from "next/font/google";
 import CustomCursor from "@/components/ui/CustomCursor";
-import CookieConsent from "@/components/ui/CookieConsent";
 import "./globals.css";
 
 const sora = Sora({
@@ -88,7 +87,6 @@ export default function RootLayout({
       </head>
       <body className="bg-bg text-text font-body antialiased">
         <CustomCursor />
-        <CookieConsent />
         {children}
       </body>
     </html>

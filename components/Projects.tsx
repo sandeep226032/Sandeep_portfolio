@@ -27,9 +27,56 @@ const projects = [
     stack: ["React.js", "Node.js", "Express.js", "MongoDB", "JWT Auth", "REST API"],
     githubUrl: "https://github.com/sandeep226032/StudHiveFrontend",
     demoUrl: null as string | null,
+    packageUrl: null as string | null,
   },
   {
     num: "02",
+    featured: true,
+    name: "DocuAgent AI",
+    tagline: "AI File Retrieval Agent · 2026",
+    desc: "An AI-powered file retrieval agent for finding relevant Google Drive files and links through contextual RAG responses.",
+    problem:
+      "Finding the right Drive resource can be slow when users only remember partial file details, file type, or related context.",
+    role: "Built the retrieval workflow using Streamlit, FastAPI, LangChain, Groq LLM, Google Drive API, and vector database search.",
+    impact:
+      "Created an intelligent retrieval layer where users can provide file name and type to receive relevant Drive resources with contextual responses.",
+    metrics: ["RAG Search", "Groq LLM", "Vector DB"],
+    features: [
+      "Built an AI-powered agent for intelligent file and link retrieval",
+      "Implemented RAG-based search over Google Drive resources",
+      "Used file name and type inputs to retrieve relevant contextual results",
+      "Connected Streamlit UI with FastAPI backend and LangChain orchestration",
+    ],
+    stack: ["Streamlit", "FastAPI", "LangChain", "Groq LLM", "Google Drive API", "Vector DB", "RAG"],
+    githubUrl: null as string | null,
+    demoUrl: null as string | null,
+    packageUrl: null as string | null,
+  },
+  {
+    num: "03",
+    featured: false,
+    name: "SMTP Email Verifier",
+    tagline: "SMTP & Network Programming · 2026",
+    desc: "An email verification package built around SMTP programming, DNS/MX validation, and socket-level network communication.",
+    problem:
+      "Basic email format checks are not enough for real validation because domains, MX records, SMTP timeouts, and blocked ports affect deliverability.",
+    role: "Developed the SMTP verification flow, DNS/MX lookup logic, socket-level checks, timeout handling, and npm package publishing workflow.",
+    impact:
+      "Published a reusable npm package for more reliable email validation while handling real-world SMTP timeout and port-blocking challenges.",
+    metrics: ["SMTP", "DNS/MX", "npm Package"],
+    features: [
+      "Validated email domains through DNS and MX record checks",
+      "Used SMTP-level communication for mailbox verification workflows",
+      "Handled timeout, network, and port-blocking edge cases",
+      "Published the verifier as an npm package",
+    ],
+    stack: ["Node.js", "SMTP", "DNS", "MX Records", "Sockets", "npm", "Network Programming"],
+    githubUrl: null as string | null,
+    demoUrl: null as string | null,
+    packageUrl: null as string | null,
+  },
+  {
+    num: "04",
     featured: false,
     name: "Bus Manzil",
     tagline: "College Exhibition Project · 2024",
@@ -43,12 +90,23 @@ const projects = [
     stack: ["Web Development"],
     githubUrl: "https://github.com/sandeep226032/BusManzil",
     demoUrl: null as string | null,
+    packageUrl: null as string | null,
   },
 ];
 
 type Project = (typeof projects)[number];
 
-function Links({ github, demo, name }: { github: string; demo: string | null; name: string }) {
+function Links({
+  github,
+  demo,
+  packageUrl,
+  name,
+}: {
+  github: string | null;
+  demo: string | null;
+  packageUrl: string | null;
+  name: string;
+}) {
   const base = { color: "var(--text-muted)", borderColor: "var(--border)" };
   const on = (e: React.MouseEvent<HTMLAnchorElement>) => {
     const el = e.currentTarget;
@@ -61,21 +119,25 @@ function Links({ github, demo, name }: { github: string; demo: string | null; na
     el.style.borderColor = base.borderColor;
   };
 
+  if (!github && !demo && !packageUrl) return null;
+
   return (
     <div className="flex flex-wrap gap-3">
-      <a
-        href={github}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="font-mono text-[0.68rem] tracking-[0.06em] uppercase no-underline border px-[0.85rem] py-[0.4rem] rounded-[2px] inline-flex items-center gap-2 transition-all duration-200"
-        style={base}
-        onMouseEnter={on}
-        onMouseLeave={off}
-        aria-label={`GitHub for ${name}`}
-      >
-        <Github size={12} aria-hidden="true" />
-        GitHub
-      </a>
+      {github && (
+        <a
+          href={github}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-mono text-[0.68rem] tracking-[0.06em] uppercase no-underline border px-[0.85rem] py-[0.4rem] rounded-[2px] inline-flex items-center gap-2 transition-all duration-200"
+          style={base}
+          onMouseEnter={on}
+          onMouseLeave={off}
+          aria-label={`GitHub for ${name}`}
+        >
+          <Github size={12} aria-hidden="true" />
+          GitHub
+        </a>
+      )}
       {demo && (
         <a
           href={demo}
@@ -89,6 +151,21 @@ function Links({ github, demo, name }: { github: string; demo: string | null; na
         >
           <ExternalLink size={12} aria-hidden="true" />
           Live Demo
+        </a>
+      )}
+      {packageUrl && (
+        <a
+          href={packageUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-mono text-[0.68rem] tracking-[0.06em] uppercase no-underline border px-[0.85rem] py-[0.4rem] rounded-[2px] inline-flex items-center gap-2 transition-all duration-200"
+          style={base}
+          onMouseEnter={on}
+          onMouseLeave={off}
+          aria-label={`npm package for ${name}`}
+        >
+          <ExternalLink size={12} aria-hidden="true" />
+          npm
         </a>
       )}
     </div>
@@ -139,8 +216,24 @@ function ProjectPreview({ project }: { project: Project }) {
       {[
         ["project", project.name],
         ["role", "Full Stack"],
-        ["backend", project.stack.includes("Node.js") ? "Node + Express" : "Web App"],
-        ["database", project.stack.includes("MongoDB") ? "MongoDB" : "Planned"],
+        [
+          "backend",
+          project.stack.includes("FastAPI")
+            ? "FastAPI"
+            : project.stack.includes("SMTP")
+              ? "Node/npm"
+              : project.stack.includes("Node.js")
+                ? "Node + Express"
+                : "Web App",
+        ],
+        [
+          "database",
+          project.stack.includes("Vector DB")
+            ? "Vector DB"
+            : project.stack.includes("MongoDB")
+              ? "MongoDB"
+              : "Planned",
+        ],
         ["focus", project.metrics[0]],
       ].map(([k, v]) => (
         <div key={k}>
@@ -218,7 +311,12 @@ function FeaturedCard({ project }: { project: Project }) {
               </span>
             ))}
           </div>
-          <Links github={project.githubUrl} demo={project.demoUrl} name={project.name} />
+          <Links
+            github={project.githubUrl}
+            demo={project.demoUrl}
+            packageUrl={project.packageUrl}
+            name={project.name}
+          />
           </div>
 
           <ProjectPreview project={project} />
@@ -274,7 +372,12 @@ function StandardCard({ project, delay }: { project: Project; delay: number }) {
             </span>
           ))}
         </div>
-        <Links github={project.githubUrl} demo={project.demoUrl} name={project.name} />
+        <Links
+          github={project.githubUrl}
+          demo={project.demoUrl}
+          packageUrl={project.packageUrl}
+          name={project.name}
+        />
       </TiltSpotlightCard>
     </motion.div>
   );

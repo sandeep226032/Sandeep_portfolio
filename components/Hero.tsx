@@ -375,8 +375,10 @@ export default function Hero() {
           <strong style={{ color: "var(--text)", fontWeight: 600 }}>
             Sandeep Nandi
           </strong>{" "}
-          — a backend developer building and maintaining real-world applications.
-          Node.js, REST APIs, third-party integrations, and database architecture.
+          — a Backend Developer Intern building scalable REST APIs,
+AI-powered applications, authentication systems, and production workflows
+using Node.js, FastAPI, LangChain, RAG, LLMs, vector databases, Docker,
+and CI/CD.
         </motion.p>
 
         {/* CTA buttons */}
