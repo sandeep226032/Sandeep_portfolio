@@ -19,7 +19,7 @@ interface SectionHeaderProps {
  *   <SectionHeader
  *     label="Experience"
  *     title={<>Production work.<br /><span style={{color:"var(--text-muted)"}}>Shipped.</span></>}
- *     subtitle="Four live systems at MatchBest Group."
+ *     subtitle="Four live systems at an Enterprise Software Group."
  *   />
  */
 export default function SectionHeader({

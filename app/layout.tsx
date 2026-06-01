@@ -27,7 +27,7 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Sandeep Nandi — Backend Developer",
   description:
-    "Backend Developer building production-grade systems. Node.js, REST APIs, database architecture, and third-party integrations. Currently interning at MatchBest Group.",
+    "Backend Developer building production-grade systems. Node.js, REST APIs, database architecture, and third-party integrations.",
   keywords: [
     "Sandeep Nandi",
     "Backend Developer",
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     description:
       "Backend Developer building production-grade systems. Node.js, REST APIs, database architecture, and third-party integrations.",
     siteName: "Sandeep Nandi Portfolio",
-    url:"https://sandeep-portfolio-beryl-phi.vercel.app/",
+    url:"https://sandeepnandi.dev/",
     images:"/Sandeep_opengraph.png"
   },
   twitter: {

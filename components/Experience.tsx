@@ -8,31 +8,31 @@ const systems = [
   {
     phase: "01",
     period: "Logistics Migration",
-    name: "Mobiking",
-    type: "Logistics Platform",
+    name: "Logistics Solutions",
+    type: "Enterprise Logistics Platform",
     icon: Truck,
     summary:
       "Worked on reliability-focused backend improvements for shipment processing, tracking, and admin operations.",
-    impact: "Improved shipment processing reliability by migrating logistics APIs from Shiprocket to Delhivery.",
+    impact: "Improved shipment processing reliability by migrating core logistics APIs between major service providers.",
     bullets: [
-      "Migrated logistics APIs from Shiprocket to Delhivery",
+      "Migrated logistics APIs for enhanced service reliability",
       "Implemented Forgot Password flow for safer account recovery",
       "Resolved admin panel bugs affecting daily operations",
       "Enhanced tracking reliability across the shipment lifecycle",
     ],
-    chips: ["Node.js", "REST API", "Delhivery API", "Admin Panel"],
+    chips: ["Node.js", "REST API", "Logistics APIs", "Admin Panel"],
   },
   {
     phase: "02",
     period: "Dynamic Content Systems",
-    name: "Cavakil",
-    type: "Real Estate Platform",
+    name: "Web CMS Engine",
+    type: "Real Estate Infrastructure",
     icon: Boxes,
     summary:
       "Built admin-controlled website modules that allowed non-technical teams to manage public-facing content.",
     impact: "Connected frontend modules with backend data models for flexible content updates.",
     bullets: [
-      "Built dynamic Showcase, Navbar, Trust, and About Us modules",
+      "Built dynamic Showcase, Navbar, and About Us modules",
       "Integrated frontend modules with backend APIs",
       "Enabled admin-controlled content management",
       "Created flexible data models for content updates",
@@ -42,7 +42,7 @@ const systems = [
   {
     phase: "03",
     period: "SaaS CRM Architecture",
-    name: "AVA CRM",
+    name: "Enterprise CRM",
     type: "SaaS CRM System",
     icon: Radio,
     summary:
@@ -50,18 +50,18 @@ const systems = [
     impact: "Added integration and realtime foundations for lead management, outreach, and multi-user workflows.",
     bullets: [
       "Developed outbound and inbound communication integrations",
-      "Integrated Meta and Apollo platforms for lead workflows",
+      "Integrated external messaging and lead platforms",
       "Implemented SSE notifications with EventBus architecture",
       "Implemented role-based access control for CRM users",
       "Researched scalable multi-tenant database architecture",
     ],
-    chips: ["Meta API", "Apollo", "PostgreSQL", "SaaS", "SSE", "EventBus", "RBAC"],
+    chips: ["Communication APIs", "Lead APIs", "PostgreSQL", "SaaS", "SSE", "EventBus", "RBAC"],
   },
   {
     phase: "04",
     period: "Database Design",
-    name: "HRMS",
-    type: "HR Management System",
+    name: "HR Management System",
+    type: "Internal HRMS",
     icon: Database,
     summary:
       "Designed data relationships and admin-panel foundations for structured employee management workflows.",
@@ -239,7 +239,7 @@ export default function Experience() {
           className="text-[1rem] leading-[1.75] mb-10 max-w-[560px]"
           style={{ color: "var(--text-muted)" }}
         >
-          Backend Developer Intern contributing to live logistics, CRM, real estate, and HR management systems at MatchBest Group.
+          Backend Developer Intern contributing to live logistics, CRM, real estate, and HR management systems at an MatchBest Group.
         </motion.p>
 
         <motion.div
@@ -253,7 +253,7 @@ export default function Experience() {
         >
           <div>
             <p className="font-head font-bold text-[1.35rem] tracking-tight" style={{ color: "var(--text)" }}>
-              MatchBest Group
+                MatchBest Group
             </p>
             <p className="font-mono text-[0.72rem] tracking-[0.08em] uppercase mt-1" style={{ color: "var(--gold)" }}>
               Backend Developer Intern

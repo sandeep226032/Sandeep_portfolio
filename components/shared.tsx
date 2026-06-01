@@ -23,8 +23,8 @@ export function About() {
       <div className="grid gap-16 md:grid-cols-2 items-start">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={inView ? { opacity: 1, y: 0 } : {}} transition={{ delay: 0.2 }}>
           {[
-            <>I&apos;m a <strong style={{ color: "var(--text)", fontWeight: 500 }}>Backend Developer Intern at MatchBest Group</strong>, where I work on production-grade applications serving real users. My work spans logistics platform migrations, CRM system integrations, and admin panel architecture.</>,
-            <>I focus on <strong style={{ color: "var(--text)", fontWeight: 500 }}>building things that work</strong> — reliable REST APIs, clean database schemas, and integrations with third-party platforms like Shiprocket, Delhivery, Meta, and Apollo.</>,
+            <>I&apos;m a <strong style={{ color: "var(--text)", fontWeight: 500 }}>Backend Developer Intern at an MatchBest Group</strong>, where I work on production-grade applications serving real users. My work spans logistics platform migrations, CRM system integrations, and admin panel architecture.</>,
+            <>I focus on <strong style={{ color: "var(--text)", fontWeight: 500 }}>building things that work</strong> — reliable REST APIs, clean database schemas, and integrations with major third-party logistics and communication platforms.</>,
             <>Currently pursuing a <strong style={{ color: "var(--text)", fontWeight: 500 }}>B.Tech in Computer Science</strong> at Maharshi Dayanand University (2022–2026), I bring a blend of academic grounding and real-world engineering practice.</>,
           ].map((p, i) => (
             <p key={i} className="text-[1rem] leading-[1.85] mb-5" style={{ color: "var(--text-muted)" }}>{p}</p>
@@ -42,7 +42,7 @@ export function About() {
           className="rounded-[4px] border p-8 flex flex-col gap-5" style={{ background: "var(--surface)", borderColor: "var(--border)" }}>
           {[
             { k: "Role", v: "Backend Developer Intern" },
-            { k: "Company", v: "MatchBest Group" },
+            { k: "Company", v: "Software Solutions Group" },
             { k: "Education", v: "B.Tech CS — Maharshi Dayanand University" },
             { k: "Location", v: "India" },
             { k: "Email", v: "Sandeep_226032@saitm.org", href: "mailto:Sandeep_226032@saitm.org" },
