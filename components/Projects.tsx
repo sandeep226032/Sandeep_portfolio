@@ -1,16 +1,18 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
-import { ArrowRight, ExternalLink, Github, Lock, Package, Sparkles } from "lucide-react";
+import Image from "next/image";
+import { ExternalLink, Github, ImageIcon, Lock, Sparkles } from "lucide-react";
 
 const projects = [
   {
     num: "01",
     featured: true,
     name: "DocuAgent AI",
+    image: "/projects/document-ai.png",
     tagline: "File retrieval agent",
-    desc: "An AI-powered file retrieval agent that helps users find relevant Google Drive files and links  using natural language.",
+    desc: "People waste time searching Drive folders when they only remember partial file names or context.I built an AI retrieval agent using FastAPI, LangChain, RAG, vector search, and Google Drive APIs.It turns vague file queries into relevant Drive file and link recommendations.",
     problem:
       "Users often remember partial file details, file types, or context, but still lose time searching across Drive folders and shared links.",
     role:
@@ -37,8 +39,9 @@ const projects = [
     num: "02",
     featured: true,
     name: "Automated Cold Outreach",
+    image: "/projects/cold-outreach.png",
     tagline: "End-to-end outreach pipeline",
-    desc: "A backend automation system that transforms company domains into personalized outreach emails for verified decision-makers.",
+    desc: "Finding the right decision-makers and sending outreach manually was slow, repetitive, and hard to scale. I built a Node.js automation pipeline that discovers companies, finds verified contacts, enriches lead data, and prepares personalized emails with safety checkpoints. It turns cold outreach from a manual workflow into a structured backend system with rate limits, retries, review steps, and CSV reporting.",
     problem:
       "Coordinating manual lead generation across multiple APIs while handling different rate limits and data formats is inefficient and unreliable.",
     role:
@@ -66,8 +69,9 @@ const projects = [
     num: "03",
     featured: false,
     name: "SMTP Email Verifier",
+    image: "/projects/smtp-verifier.png",
     tagline: "Network programming package",
-    desc: "A backend package for email verification using DNS/MX validation, SMTP-level checks, socket behavior, and timeout handling.",
+    desc: "Most email validators only check format, but real deliverability depends on DNS, MX records, SMTP behavior, and network failures.I built a Node.js email verification utility using DNS/MX lookup, SMTP checks, sockets, and timeout handling.It demonstrates production-minded backend validation beyond simple regex checks.",
     problem:
       "Basic email format checks miss real deliverability issues caused by missing MX records, SMTP failures, timeouts, and blocked ports.",
     role:
@@ -94,8 +98,9 @@ const projects = [
     num: "04",
     featured: true,
     name: "StudHive",
+    image: "/projects/studhive.png",
     tagline: "Campus communication platform",
-    desc: "A full-stack social platform for college communities to share updates, announcements, and resources with secure user access.",
+    desc: "College updates were scattered across WhatsApp groups, notices, and informal channels.I built a full-stack campus communication platform with authentication, RBAC, search, and filtering.It gives students and admins one organized place to publish, manage, and discover updates.",
     problem:
       "College updates were scattered across informal channels, making discovery, moderation, and admin control difficult.",
     role:
@@ -121,6 +126,84 @@ const projects = [
 ];
 
 type Project = (typeof projects)[number];
+
+function ScreenshotMiniCard({ project }: { project: Project }) {
+  const [imageFailed, setImageFailed] = useState(false);
+
+  return (
+    <a
+      href={project.githubUrl || project.packageUrl || project.demoUrl || "#projects"}
+      target={project.githubUrl || project.packageUrl || project.demoUrl ? "_blank" : undefined}
+      rel={project.githubUrl || project.packageUrl || project.demoUrl ? "noopener noreferrer" : undefined}
+      className="group block w-[220px] shrink-0 overflow-hidden rounded-[10px] border no-underline sm:w-[260px]"
+      style={{ background: "var(--surface)", borderColor: "var(--border)" }}
+      aria-label={`Open ${project.name}`}
+    >
+      <div className="flex items-center justify-between border-b px-3 py-2" style={{ borderColor: "var(--border)" }}>
+        <div className="flex items-center gap-1.5" aria-hidden="true">
+          <span className="h-2 w-2 rounded-full" style={{ background: "#ff5f57" }} />
+          <span className="h-2 w-2 rounded-full" style={{ background: "#ffbd2e" }} />
+          <span className="h-2 w-2 rounded-full" style={{ background: "#28c840" }} />
+        </div>
+        <span className="max-w-[130px] truncate font-mono text-[0.56rem] uppercase tracking-[0.08em]" style={{ color: "var(--text-dim)" }}>
+          {project.name}
+        </span>
+      </div>
+
+      <div className="relative aspect-[16/9] overflow-hidden" style={{ background: "var(--bg)" }}>
+        {!imageFailed ? (
+          <Image
+            src={project.image}
+            alt={`${project.name} screenshot`}
+            fill
+            sizes="260px"
+            className="object-cover transition-transform duration-700 group-hover:scale-[1.06]"
+            onError={() => setImageFailed(true)}
+          />
+        ) : (
+          <div className="flex h-full flex-col items-center justify-center gap-2 px-4 text-center">
+            <span
+              className="flex h-10 w-10 items-center justify-center rounded-[8px] border"
+              style={{ color: "var(--gold)", background: "var(--gold-dim)", borderColor: "var(--gold-mid)" }}
+              aria-hidden="true"
+            >
+              <ImageIcon size={18} />
+            </span>
+            <p className="font-head text-[0.95rem] font-extrabold leading-tight" style={{ color: "var(--text)" }}>
+              {project.name}
+            </p>
+          </div>
+        )}
+      </div>
+    </a>
+  );
+}
+
+function ScreenshotMarquee() {
+  const marqueeProjects = [...projects, ...projects];
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 14 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{ duration: 0.55, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+      className="relative border-b py-6"
+      style={{ borderColor: "var(--border)" }}
+      aria-label="Animated project screenshots"
+    >
+      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16" style={{ background: "linear-gradient(to right, var(--bg), transparent)" }} />
+      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16" style={{ background: "linear-gradient(to left, var(--bg), transparent)" }} />
+      <div className="overflow-hidden">
+        <div className="project-shot-marquee flex w-max gap-4">
+          {marqueeProjects.map((project, index) => (
+            <ScreenshotMiniCard key={`${project.name}-${index}`} project={project} />
+          ))}
+        </div>
+      </div>
+    </motion.div>
+  );
+}
 
 function ProjectLinks({ project }: { project: Project }) {
   const linkClass =
@@ -241,6 +324,8 @@ export default function Projects() {
             Projects.
           </h2>
         </motion.div>
+
+        <ScreenshotMarquee />
 
         <div role="list" aria-label="Projects">
           {projects.map((project, index) => (

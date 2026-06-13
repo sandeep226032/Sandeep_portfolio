@@ -86,7 +86,7 @@ export default function Skills() {
               transition={{ duration: 0.55, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
             >
               <h3 
-                className="font-head text-[1rem] font-bold uppercase tracking-[0.15em] mb-6 flex items-center gap-3"
+                className="font-head text-[1rem] font-bold  tracking-[0.15em] mb-6 flex items-center gap-3"
                 style={{ color: "var(--text-muted)" }}
               >
                 <group.icon size={16} className="shrink-0" />

@@ -4,27 +4,27 @@
 
 :root {
   color-scheme: dark;
-  --bg: #090a0b;
-  --surface: #111315;
-  --surface2: #181b1e;
-  --surface-dim: rgba(255, 255, 255, 0.03);
-  --border: rgba(244, 241, 234, 0.09);
-  --border-hover: rgba(244, 241, 234, 0.18);
-  --text: #f4f1ea;
-  --text-muted: #a39b8f;
-  --text-dim: #6f675d;
-  --accent: #d6a84f;
-  --accent-dim: rgba(214, 168, 79, 0.12);
-  --accent-mid: rgba(214, 168, 79, 0.3);
-  --accent-contrast: #090a0b;
-  --api-blue: #5ba7ff;
-  --api-blue-dim: rgba(91, 167, 255, 0.1);
-  --sage: #4f9d85;
-  --sage-dim: rgba(79, 157, 133, 0.12);
-  --nav-bg: rgba(9, 10, 11, 0.88);
-  --nav-border: rgba(255, 255, 255, 0.06);
-  --nav-border-scrolled: rgba(255, 255, 255, 0.1);
-  --overlay: rgba(9, 10, 11, 0.6);
+  --bg: #000000;
+  --surface: #080808;
+  --surface2: #111111;
+  --surface-dim: rgba(255, 255, 255, 0.025);
+  --border: rgba(255, 255, 255, 0.075);
+  --border-hover: rgba(255, 255, 255, 0.15);
+  --text: #f7f7f7;
+  --text-muted: #b8b8b8;
+  --text-dim: #777777;
+  --accent: #f5c451;
+  --accent-dim: rgba(245, 196, 81, 0.11);
+  --accent-mid: rgba(245, 196, 81, 0.28);
+  --accent-contrast: #000000;
+  --api-blue: #f5c451;
+  --api-blue-dim: rgba(245, 196, 81, 0.08);
+  --sage: #4ade80;
+  --sage-dim: rgba(74, 222, 128, 0.11);
+  --nav-bg: rgba(0, 0, 0, 0.9);
+  --nav-border: rgba(255, 255, 255, 0.055);
+  --nav-border-scrolled: rgba(255, 255, 255, 0.11);
+  --overlay: rgba(0, 0, 0, 0.72);
   --danger: #e87070;
   --hero-orb: rgba(214, 168, 79, 0.07);
   --spotlight: rgba(214, 168, 79, 0.08);
@@ -37,32 +37,32 @@
 }
 
 [data-theme="light"] {
-  color-scheme: light;
-  --bg: #f7f4ed;
-  --surface: #fffdf8;
-  --surface2: #ece5d8;
-  --surface-dim: rgba(41, 34, 24, 0.04);
-  --border: rgba(31, 33, 31, 0.12);
-  --border-hover: rgba(31, 33, 31, 0.22);
-  --text: #1f211f;
-  --text-muted: #655f56;
-  --text-dim: #91887b;
-  --accent: #996a1f;
-  --accent-dim: rgba(153, 106, 31, 0.12);
-  --accent-mid: rgba(153, 106, 31, 0.28);
-  --accent-contrast: #fffdf8;
-  --api-blue: #256fbd;
-  --api-blue-dim: rgba(37, 111, 189, 0.1);
-  --sage: #3f7e6e;
-  --sage-dim: rgba(63, 126, 110, 0.12);
-  --nav-bg: rgba(247, 243, 234, 0.9);
-  --nav-border: rgba(31, 33, 31, 0.1);
-  --nav-border-scrolled: rgba(31, 33, 31, 0.18);
-  --overlay: rgba(31, 33, 31, 0.3);
-  --danger: #b84242;
-  --hero-orb: rgba(153, 106, 31, 0.1);
-  --spotlight: rgba(153, 106, 31, 0.08);
-  --spotlight-border: rgba(153, 106, 31, 0.28);
+  color-scheme: dark;
+  --bg: #000000;
+  --surface: #080808;
+  --surface2: #111111;
+  --surface-dim: rgba(255, 255, 255, 0.025);
+  --border: rgba(255, 255, 255, 0.075);
+  --border-hover: rgba(255, 255, 255, 0.15);
+  --text: #f7f7f7;
+  --text-muted: #b8b8b8;
+  --text-dim: #777777;
+  --accent: #f5c451;
+  --accent-dim: rgba(245, 196, 81, 0.11);
+  --accent-mid: rgba(245, 196, 81, 0.28);
+  --accent-contrast: #000000;
+  --api-blue: #f5c451;
+  --api-blue-dim: rgba(245, 196, 81, 0.08);
+  --sage: #4ade80;
+  --sage-dim: rgba(74, 222, 128, 0.11);
+  --nav-bg: rgba(0, 0, 0, 0.9);
+  --nav-border: rgba(255, 255, 255, 0.055);
+  --nav-border-scrolled: rgba(255, 255, 255, 0.11);
+  --overlay: rgba(0, 0, 0, 0.72);
+  --danger: #e87070;
+  --hero-orb: transparent;
+  --spotlight: rgba(245, 196, 81, 0.07);
+  --spotlight-border: rgba(245, 196, 81, 0.28);
 }
 
 html {
@@ -94,11 +94,11 @@ body {
   background: var(--bg);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--border-hover);
+  background: rgba(255, 255, 255, 0.18);
   border-radius: 2px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--text-dim);
+  background: rgba(255, 255, 255, 0.28);
 }
 
 /* Focus rings */
@@ -110,19 +110,9 @@ body {
 
 /* Grid background pattern */
 .grid-bg {
-  background-image: linear-gradient(var(--border) 1px, transparent 1px),
-    linear-gradient(90deg, var(--border) 1px, transparent 1px);
-  background-size: 60px 60px;
-  -webkit-mask-image: radial-gradient(
-    ellipse 80% 60% at 50% 40%,
-    black 30%,
-    transparent 100%
-  );
-  mask-image: radial-gradient(
-    ellipse 80% 60% at 50% 40%,
-    black 30%,
-    transparent 100%
-  );
+  background-image: none;
+  -webkit-mask-image: none;
+  mask-image: none;
 }
 
 /* Reveal animation utility */
@@ -256,4 +246,21 @@ body {
   a {
     text-decoration: underline;
   }
+}
+
+@keyframes projectShotMarquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-50% - 0.5rem));
+  }
+}
+
+.project-shot-marquee {
+  animation: projectShotMarquee 28s linear infinite;
+}
+
+.project-shot-marquee:hover {
+  animation-play-state: paused;
 }
