@@ -2,181 +2,120 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import InfiniteMarquee from "@/components/ui/InfiniteMarquee";
+import { Bot, Braces, CloudCog, Database, Server, ShieldCheck } from "lucide-react";
 
-const marqueeSkillsTop = [
-  "JavaScript", "Node.js", "Express.js", "React.js", "Next.js", 
-  "TypeScript", "MongoDB", "MySQL", "PostgreSQL"
-];
-
-const marqueeSkillsBottom = [
-  "REST APIs", "System Architecture", "Git", "GitHub", "AWS", 
-  "OOP", "Data Structures", "Docker", "LangChain", "RAG", "Vector Databases"
-];
-
-const barGroups = [
+const capabilityGroups = [
   {
-    group: "Languages",
-    items: [
-      { name: "JavaScript",  level: "Primary",    pct: 90 },
-      { name: "Java",        level: "Proficient", pct: 70 },
-      { name: "SQL",         level: "Proficient", pct: 75 },
-      { name: "C",           level: "Familiar",   pct: 55 },
-    ],
+    title: "Backend Engineering",
+    icon: Server,
+    summary: "API-first backend development for auth, data, integrations, admin workflows, and product modules.",
+    proof: "Used during internship across logistics, CRM, CMS, and HRMS systems.",
+    items: ["Node.js", "Express.js", "FastAPI", "REST APIs", "SSE", "WebSockets", "SMTP", "Network Programming"],
   },
   {
-    group: "Backend",
-    items: [
-      { name: "Node.js",         level: "Core",     pct: 88 },
-      { name: "Express.js",      level: "Core",     pct: 85 },
-      { name: "REST API Design", level: "Strong",   pct: 85 },
-      { name: "SSE",             level: "Implemented",pct: 75 },
-      { name: "Prisma",          level: "Strong",     pct: 80 },
-      { name: "Mongoose",        level: "Strong", pct: 85 },
-      { name: "Websockets",      level: "Learning", pct: 60 },
-      {name:"SMTP & Network Programming", level: "Implemented", pct: 70},
-      {name: "FastAPI",         level: "Core", pct: 80}
-    
-    ],
+    title: "AI Applications",
+    icon: Bot,
+    summary: "LLM-backed workflows that connect retrieval, APIs, and product interfaces.",
+    proof: "Built RAG-style file retrieval flows with FastAPI, LangChain, vector search, and Drive integration.",
+    items: ["LangChain", "RAG", "Vector DBs", "OpenAI APIs", "Groq API", "AI Agents", "Prompt Workflows"],
   },
   {
-    group: "Databases",
-    items: [
-      { name: "MongoDB",           level: "Primary",    pct: 82 },
-      { name: "MySQL",             level: "Proficient", pct: 72 },
-      { name: "PostgreSQL",        level: "Familiar",   pct: 60 },
-      { name: "ER Diagram Design", level: "Strong",     pct: 78 },
-    ],
-  },
-];
-
-const badgeGroups = [
-  {
-    group: "AI / LLM",
-    items: ["LangChain", "RAG", "LLM Integration", "Vector Databases", "Groq API"],
+    title: "Databases & Data Modeling",
+    icon: Database,
+    summary: "Schema design, persistence layers, ER modeling, and database-backed application workflows.",
+    proof: "Worked with MongoDB, MySQL, PostgreSQL, and HRMS ER diagram design.",
+    items: ["MongoDB", "PostgreSQL", "MySQL", "Mongoose", "Prisma", "ER Diagrams", "Query Design"],
   },
   {
-    group: "Frontend",
-    items: ["React.js", "HTML", "CSS", "next.js", "Responsive UI", "REST integration","Streamlit"],
+    title: "Frontend Integration",
+    icon: Braces,
+    summary: "Full-stack UI integration for dashboards, admin panels, social apps, and AI interfaces.",
+    proof: "Built React/Next.js interfaces connected to REST APIs and backend workflows.",
+    items: ["React.js", "Next.js", "TypeScript", "JavaScript", "HTML", "CSS", "Responsive UI", "Streamlit"],
   },
   {
-    group: "DevOps & Tools",
-    items: ["Docker", "CI/CD", "Git", "GitHub", "Postman", "VS Code", "Vercel", "S3", "R2"],
+    title: "Production Foundations",
+    icon: CloudCog,
+    summary: "Practical tooling for shipping, debugging, version control, API testing, and deployment workflows.",
+    proof: "Used across internship and personal projects to move software beyond local-only demos.",
+    items: ["Docker", "Git", "GitHub", "CI/CD", "Postman", "Vercel", "S3", "Cloudflare R2"],
+  },
+  {
+    title: "Security & Access Control",
+    icon: ShieldCheck,
+    summary: "Authentication and authorization patterns for role-aware backend applications.",
+    proof: "Implemented JWT auth, RBAC, account recovery, and protected admin/user workflows.",
+    items: ["JWT", "RBAC", "Auth Flows", "Password Recovery", "Admin Access", "Protected APIs"],
   },
 ];
-
-function BarGroup({ group, delay }: { group: (typeof barGroups)[0]; delay: number }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
-  return (
-    <div ref={ref} className="rounded-[4px] border p-6" style={{ background: "var(--surface)", borderColor: "var(--border)" }}>
-      <motion.div
-        initial={{ opacity: 0, y: 16 }}
-        animate={inView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.5, delay }}
-      >
-        <p className="font-mono text-[0.65rem] tracking-[0.12em] uppercase mb-5 pb-3 border-b"
-          style={{ color: "var(--gold)", borderColor: "var(--border)" }}>
-          {group.group}
-        </p>
-        <div className="flex flex-col gap-4">
-          {group.items.map((item, i) => (
-            <div key={item.name}>
-              <div className="flex justify-between items-baseline mb-[6px]">
-                <span className="text-[0.875rem] font-medium" style={{ color: "var(--text)" }}>{item.name}</span>
-                <span className="font-mono text-[0.65rem]" style={{ color: "var(--text-dim)" }}>{item.level}</span>
-              </div>
-              <div className="h-[2px] rounded-[1px] overflow-hidden" style={{ background: "var(--border)" }}
-                role="progressbar" aria-valuenow={item.pct} aria-valuemin={0} aria-valuemax={100}
-                aria-label={`${item.name} proficiency ${item.pct}%`}>
-                <motion.div
-                  className="h-full rounded-[1px]"
-                  style={{ background: "linear-gradient(90deg, var(--gold), rgba(232,184,75,0.4))" }}
-                  initial={{ width: 0 }}
-                  animate={inView ? { width: `${item.pct}%` } : { width: 0 }}
-                  transition={{ duration: 1.2, delay: delay + i * 0.08, ease: [0.22, 1, 0.36, 1] }}
-                />
-              </div>
-            </div>
-          ))}
-        </div>
-      </motion.div>
-    </div>
-  );
-}
-
-function BadgeGroup({ group, delay }: { group: (typeof badgeGroups)[0]; delay: number }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
-  return (
-    <motion.div ref={ref}
-      initial={{ opacity: 0, y: 16 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.5, delay }}
-      className="rounded-[4px] border p-6 mb-5"
-      style={{ background: "var(--surface)", borderColor: "var(--border)" }}
-    >
-      <p className="font-mono text-[0.65rem] tracking-[0.12em] uppercase mb-4 pb-3 border-b"
-        style={{ color: "var(--gold)", borderColor: "var(--border)" }}>
-        {group.group}
-      </p>
-      <div className="flex flex-wrap gap-2" role="list" aria-label={`${group.group} skills`}>
-        {group.items.map((item) => (
-          <span key={item} role="listitem"
-            className="font-mono text-[0.65rem] tracking-[0.05em] uppercase px-3 py-[0.3rem] rounded-[2px] border transition-all duration-200 cursor-default"
-            style={{ color: "var(--text-muted)", background: "var(--surface2)", borderColor: "var(--border)" }}
-            onMouseEnter={(e) => { const el = e.currentTarget as HTMLElement; el.style.borderColor = "var(--gold-mid)"; el.style.color = "var(--gold)"; }}
-            onMouseLeave={(e) => { const el = e.currentTarget as HTMLElement; el.style.borderColor = "var(--border)"; el.style.color = "var(--text-muted)"; }}
-          >
-            {item}
-          </span>
-        ))}
-      </div>
-    </motion.div>
-  );
-}
 
 export default function Skills() {
-  const headerRef = useRef<HTMLDivElement>(null);
-  const headerInView = useInView(headerRef, { once: true, margin: "-80px" });
+  const ref = useRef<HTMLElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="skills" className="max-w-[1100px] mx-auto px-10 py-24" aria-labelledby="skills-heading">
-      <div ref={headerRef} className="mb-14">
-        <motion.p initial={{ opacity: 0, y: 16 }} animate={headerInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6 }}
-          className="font-mono text-[0.7rem] tracking-[0.14em] uppercase mb-3 flex items-center gap-3" style={{ color: "var(--gold)" }}>
-          <span className="w-6 h-[1px] inline-block flex-shrink-0" style={{ background: "var(--gold)" }} aria-hidden="true" />
-          Skills
-        </motion.p>
-        <motion.h2 id="skills-heading" initial={{ opacity: 0, y: 16 }} animate={headerInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6, delay: 0.1 }}
-          className="font-head font-extrabold tracking-tight leading-[1.05] mb-4"
-          style={{ fontSize: "clamp(2rem, 4vw, 3rem)", color: "var(--text)" }}>
-          Technical<br /><span style={{ color: "var(--text-muted)" }}>proficiency.</span>
-        </motion.h2>
-        <motion.p initial={{ opacity: 0, y: 16 }} animate={headerInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-[1rem] leading-[1.75] max-w-[520px] mb-8" style={{ color: "var(--text-muted)" }}>
-          Languages, frameworks, databases, and developer tools I work with regularly.
-        </motion.p>
+    <section
+      id="skills"
+      ref={ref}
+      className="px-5 py-20 sm:px-6 md:px-10 lg:py-24"
+      aria-labelledby="skills-heading"
+    >
+      <div className="mx-auto max-w-[960px]">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+          className="border-b py-6"
+          style={{ borderColor: "var(--border)" }}
+        >
+          <h2
+            id="skills-heading"
+            className="font-head text-[2rem] font-extrabold leading-tight tracking-tight sm:text-[2.5rem]"
+            style={{ color: "var(--text)" }}
+          >
+            Technical Skills.
+          </h2>
+        </motion.div>
+
+        <div className="space-y-12 py-12">
+          {capabilityGroups.map((group, i) => (
+            <motion.div
+              key={group.title}
+              initial={{ opacity: 0, y: 18 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.55, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <h3 
+                className="font-head text-[1rem] font-bold uppercase tracking-[0.15em] mb-6 flex items-center gap-3"
+                style={{ color: "var(--text-muted)" }}
+              >
+                <group.icon size={16} className="shrink-0" />
+                {group.title}
+              </h3>
+              
+              <div className="flex flex-wrap gap-4">
+                {group.items.map((item) => (
+                  <div
+                    key={item}
+                    className="group relative flex items-center justify-center rounded-[12px] border px-5 py-3 transition-all duration-300 hover:bg-[rgba(255,255,255,0.05)]"
+                    style={{ 
+                      background: "rgba(255,255,255,0.02)", 
+                      borderColor: "var(--border)" 
+                    }}
+                  >
+                    <span 
+                      className="font-mono text-[0.82rem] font-bold tracking-tight uppercase" 
+                      style={{ color: "var(--text-muted)" }}
+                    >
+                      {item}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
-
-      {/* Infinite Marquees */}
-      <motion.div 
-        initial={{ opacity: 0, overflow: "hidden" }} 
-        animate={headerInView ? { opacity: 1 } : {}} 
-        transition={{ duration: 0.8, delay: 0.3 }}
-        className="w-[100vw] relative left-1/2 right-1/2 -mx-[50vw] mb-16 overflow-hidden"
-      >
-        <InfiniteMarquee items={marqueeSkillsTop} duration={40} reverse={false} />
-        <InfiniteMarquee items={marqueeSkillsBottom} duration={45} reverse={true} />
-      </motion.div>
-
-      {/* Structured Proficiency Bars */}
-      <div className="grid gap-5 mb-5" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))" }}>
-        {barGroups.map((g, i) => <BarGroup key={g.group} group={g} delay={i * 0.1 + 0.4} />)}
-      </div>
-
-      {/* Miscellaneous Skills / Badges */}
-      {badgeGroups.map((g, i) => <BadgeGroup key={g.group} group={g} delay={i * 0.1 + 0.6} />)}
     </section>
   );
 }

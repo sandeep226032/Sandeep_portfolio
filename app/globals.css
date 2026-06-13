@@ -17,6 +17,8 @@
   --accent-dim: rgba(214, 168, 79, 0.12);
   --accent-mid: rgba(214, 168, 79, 0.3);
   --accent-contrast: #090a0b;
+  --api-blue: #5ba7ff;
+  --api-blue-dim: rgba(91, 167, 255, 0.1);
   --sage: #4f9d85;
   --sage-dim: rgba(79, 157, 133, 0.12);
   --nav-bg: rgba(9, 10, 11, 0.88);
@@ -49,6 +51,8 @@
   --accent-dim: rgba(153, 106, 31, 0.12);
   --accent-mid: rgba(153, 106, 31, 0.28);
   --accent-contrast: #fffdf8;
+  --api-blue: #256fbd;
+  --api-blue-dim: rgba(37, 111, 189, 0.1);
   --sage: #3f7e6e;
   --sage-dim: rgba(63, 126, 110, 0.12);
   --nav-bg: rgba(247, 243, 234, 0.9);

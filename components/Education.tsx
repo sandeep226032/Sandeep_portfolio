@@ -44,52 +44,27 @@ export default function Education() {
     <section
       id="education"
       ref={ref}
-      className="max-w-[1100px] mx-auto px-10 py-24"
+      className="px-5 py-20 sm:px-6 md:px-10 lg:py-24"
       aria-labelledby="edu-heading"
     >
-      {/* Label */}
-      <motion.p
-        initial={{ opacity: 0, y: 16 }}
-        animate={inView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.6 }}
-        className="font-mono text-[0.7rem] tracking-[0.14em] uppercase mb-3 flex items-center gap-3"
-        style={{ color: "var(--gold)" }}
-      >
-        <span
-          className="w-6 h-[1px] inline-block flex-shrink-0"
-          style={{ background: "var(--gold)" }}
-          aria-hidden="true"
-        />
-        Education &amp; Credentials
-      </motion.p>
+      <div className="mx-auto max-w-[960px]">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+          className="border-b py-6"
+          style={{ borderColor: "var(--border)" }}
+        >
+          <h2
+            id="edu-heading"
+            className="font-head text-[2rem] font-extrabold leading-tight tracking-tight sm:text-[2.5rem]"
+            style={{ color: "var(--text)" }}
+          >
+            Education.
+          </h2>
+        </motion.div>
 
-      {/* Heading */}
-      <motion.h2
-        id="edu-heading"
-        initial={{ opacity: 0, y: 16 }}
-        animate={inView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.6, delay: 0.1 }}
-        className="font-head font-extrabold tracking-tight leading-[1.05] mb-4"
-        style={{ fontSize: "clamp(2rem, 4vw, 3rem)", color: "var(--text)" }}
-      >
-        Academic background
-        <br />
-        <span style={{ color: "var(--text-muted)" }}>&amp; certifications.</span>
-      </motion.h2>
-
-      <motion.p
-        initial={{ opacity: 0, y: 16 }}
-        animate={inView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.6, delay: 0.2 }}
-        className="text-[1rem] leading-[1.75] max-w-[520px] mb-14"
-        style={{ color: "var(--text-muted)" }}
-      >
-        Formal education combined with professional training and practical exhibition
-        experience.
-      </motion.p>
-
-      {/* Degree cards */}
-      <div className="grid md:grid-cols-2 gap-5 mb-8">
+        <div className="grid md:grid-cols-2 gap-8 py-12">
         {degrees.map((edu, i) => (
           <motion.div
             key={edu.degree}
@@ -184,6 +159,7 @@ export default function Education() {
           </motion.div>
         ))}
       </div>
+    </div>
     </section>
   );
 }

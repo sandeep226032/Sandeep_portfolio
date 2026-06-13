@@ -25,34 +25,44 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Sandeep Nandi — Backend Developer",
+  metadataBase: new URL("https://www.sandeepnandi.dev"),
+  title: "Sandeep Nandi - Backend & AI Engineer",
   description:
-    "Backend Developer building production-grade systems. Node.js, REST APIs, database architecture, and third-party integrations.",
+    "Backend and AI engineer building scalable APIs, RAG systems, authentication workflows, and production-grade applications.",
   keywords: [
     "Sandeep Nandi",
     "Backend Developer",
-    "Node.js",
-    "REST API",
-    "MongoDB",
-    "MERN Stack",
+    "Software Engineer",
     "Full Stack Developer",
+    "AI Engineer",
+    "Node.js",
+    "Express.js",
+    "FastAPI",
+    "REST API",
+    "LangChain",
+    "RAG",
+    "Vector Databases",
+    "MongoDB",
+    "PostgreSQL",
+    "MySQL",
+    "MERN Stack",
     "Portfolio",
   ],
   authors: [{ name: "Sandeep Nandi" }],
   openGraph: {
     type: "website",
     locale: "en_IN",
-    title: "Sandeep Nandi — Backend Developer",
+    title: "Sandeep Nandi - Backend & AI Engineer",
     description:
-      "Backend Developer building production-grade systems. Node.js, REST APIs, database architecture, and third-party integrations.",
+      "Backend and AI engineer building scalable APIs, RAG systems, authentication workflows, and production-grade applications.",
     siteName: "Sandeep Nandi Portfolio",
-    url:"https://sandeepnandi.dev/",
-    images:"/Sandeep_opengraph.png"
+    url: "https://www.sandeepnandi.dev/",
+    images: "/Sandeep_opengraph.png",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Sandeep Nandi — Backend Developer",
-    description: "Backend Developer. Node.js | REST APIs | MongoDB | Express.",
+    title: "Sandeep Nandi - Backend & AI Engineer",
+    description: "Backend Developer building APIs, AI systems, and production-ready applications.",
   },
   robots: { index: true, follow: true },
 };
@@ -73,13 +83,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: `
               (function () {
-                try {
-                  var stored = localStorage.getItem("portfolio_theme");
-                  var system = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
-                  document.documentElement.dataset.theme = stored || system;
-                } catch (_) {
-                  document.documentElement.dataset.theme = "dark";
-                }
+                document.documentElement.dataset.theme = "dark";
               })();
             `,
           }}

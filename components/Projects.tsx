@@ -2,53 +2,63 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { ArrowRight, ExternalLink, Github } from "lucide-react";
-import TiltSpotlightCard from "@/components/ui/TiltSpotlightCard";
+import { ArrowRight, ExternalLink, Github, Lock, Package, Sparkles } from "lucide-react";
 
 const projects = [
   {
     num: "01",
     featured: true,
-    name: "StudHive",
-    tagline: "Social Interface for College Updates",
-    desc: "A full-stack social platform for college communities to share updates, announcements, and resources. Built across the MERN stack with a focus on auth, access control, and discoverability.",
+    name: "DocuAgent AI",
+    tagline: "File retrieval agent",
+    desc: "An AI-powered file retrieval agent that helps users find relevant Google Drive files and links  using natural language.",
     problem:
-      "College updates were scattered across informal channels, making discovery and admin control difficult.",
-    role: "Designed and built the full-stack architecture, authentication flow, student/admin access, and update discovery experience.",
-    impact:
-      "Created a focused campus communication product with secure access control and mobile-friendly workflows.",
-    metrics: ["JWT Auth", "RBAC", "Search + Filters"],
+      "Users often remember partial file details, file types, or context, but still lose time searching across Drive folders and shared links.",
+    role:
+      "Built the retrieval workflow, FastAPI backend, LangChain orchestration, Groq LLM integration.",
+    architecture:
+      "Streamlit UI -> FastAPI service -> LangChain retrieval chain -> vector database -> Google Drive API -> contextual LLM response.",
+    challenges:
+      "Balancing simple user inputs with useful retrieval context, normalizing Drive results, and keeping the backend flow understandable.",
+    result:
+      "Created a practical AI assistant that turns vague file queries into contextual Drive resource recommendations.",
+    metrics: ["RAG", "FastAPI", "Vector Search"],
     features: [
-      "JWT-based authentication with secure session management",
-      "Role-based access control separating student and admin views",
-      "Search and filtering for discovering relevant college updates",
-      "Fully responsive UI optimised for mobile and desktop",
+      "RAG-based search over file metadata and contextual inputs",
+      "FastAPI backend connected to a Streamlit interface",
+      "Google Drive API integration for file and link retrieval",
+      "LLM-powered responses using LangChain orchestration",
     ],
-    stack: ["React.js", "Node.js", "Express.js", "MongoDB", "JWT Auth", "REST API"],
-    githubUrl: "https://github.com/sandeep226032/StudHiveFrontend",
+    stack: ["FastAPI", "Streamlit", "LangChain", "Groq LLM", "Google Drive API", "Vector DB", "RAG"],
+    githubUrl: "https://github.com/sandeep226032/TailorTalk_assignment_ai_agent.git",
     demoUrl: null as string | null,
     packageUrl: null as string | null,
   },
   {
     num: "02",
     featured: true,
-    name: "DocuAgent AI",
-    tagline: "AI File Retrieval Agent · 2026",
-    desc: "An AI-powered file retrieval agent for finding relevant Google Drive files and links through contextual RAG responses.",
+    name: "Automated Cold Outreach",
+    tagline: "End-to-end outreach pipeline",
+    desc: "A backend automation system that transforms company domains into personalized outreach emails for verified decision-makers.",
     problem:
-      "Finding the right Drive resource can be slow when users only remember partial file details, file type, or related context.",
-    role: "Built the retrieval workflow using Streamlit, FastAPI, LangChain, Groq LLM, Google Drive API, and vector database search.",
-    impact:
-      "Created an intelligent retrieval layer where users can provide file name and type to receive relevant Drive resources with contextual responses.",
-    metrics: ["RAG Search", "Groq LLM", "Vector DB"],
+      "Coordinating manual lead generation across multiple APIs while handling different rate limits and data formats is inefficient and unreliable.",
+    role:
+      "Architected the pipeline, implemented Bottleneck-based throttling, built a reusable retry utility, and integrated Ocean.io and Prospeo APIs.",
+    architecture:
+      "Node.js CLI -> Ocean.io -> Prospeo Decision Maker Search -> Data Enrichment -> Bottleneck Queues -> Brevo SMTP -> CSV Reporting.",
+    challenges:
+      "Managing disparate API credit systems, implementing robust error recovery with backoff, and normalizing inconsistent JSON responses.",
+    result:
+      "Built a production-grade CLI tool that automates lead discovery to email delivery with safety checkpoints and auditing.",
+    metrics: ["Rate Limiting", "API Pipeline", "Node.js"],
     features: [
-      "Built an AI-powered agent for intelligent file and link retrieval",
-      "Implemented RAG-based search over Google Drive resources",
-      "Used file name and type inputs to retrieve relevant contextual results",
-      "Connected Streamlit UI with FastAPI backend and LangChain orchestration",
+      "Multi-stage API orchestration (Ocean.io, Prospeo, Brevo)",
+      "Advanced rate limiting using Bottleneck queues",
+      "Robust retry mechanism with exponential backoff strategy",
+      "Safety checkpoints for manual review before email dispatch",
+      "Zod-powered configuration and environment validation",
     ],
-    stack: ["Streamlit", "FastAPI", "LangChain", "Groq LLM", "Google Drive API", "Vector DB", "RAG"],
-    githubUrl: null as string | null,
+    stack: ["Node.js", "Ocean.io", "Prospeo", "Brevo", "Bottleneck", "Zod", "CSV"],
+    githubUrl: "https://github.com/sandeep226032/Automated-cold-outreach-engine.git",
     demoUrl: null as string | null,
     packageUrl: null as string | null,
   },
@@ -56,39 +66,55 @@ const projects = [
     num: "03",
     featured: false,
     name: "SMTP Email Verifier",
-    tagline: "SMTP & Network Programming · 2026",
-    desc: "An email verification package built around SMTP programming, DNS/MX validation, and socket-level network communication.",
+    tagline: "Network programming package",
+    desc: "A backend package for email verification using DNS/MX validation, SMTP-level checks, socket behavior, and timeout handling.",
     problem:
-      "Basic email format checks are not enough for real validation because domains, MX records, SMTP timeouts, and blocked ports affect deliverability.",
-    role: "Developed the SMTP verification flow, DNS/MX lookup logic, socket-level checks, timeout handling, and npm package publishing workflow.",
-    impact:
-      "Published a reusable npm package for more reliable email validation while handling real-world SMTP timeout and port-blocking challenges.",
-    metrics: ["SMTP", "DNS/MX", "npm Package"],
+      "Basic email format checks miss real deliverability issues caused by missing MX records, SMTP failures, timeouts, and blocked ports.",
+    role:
+      "Developed the SMTP verification flow, DNS/MX lookup logic, socket-level checks, timeout handling, and npm publishing workflow.",
+    architecture:
+      "Node.js package -> syntax/domain validation -> DNS and MX lookup -> SMTP handshake checks -> normalized verification result.",
+    challenges:
+      "Handling SMTP provider differences, network timeouts, port restrictions, and cases where servers intentionally block verification.",
+    result:
+      "Published a reusable backend utility that demonstrates practical network programming beyond standard CRUD APIs.",
+    metrics: ["SMTP", "DNS/MX", "npm"],
     features: [
-      "Validated email domains through DNS and MX record checks",
-      "Used SMTP-level communication for mailbox verification workflows",
-      "Handled timeout, network, and port-blocking edge cases",
-      "Published the verifier as an npm package",
+      "DNS and MX record validation",
+      "SMTP-level mailbox verification workflow",
+      "Timeout and blocked-port edge handling",
+      "Reusable package-oriented implementation",
     ],
     stack: ["Node.js", "SMTP", "DNS", "MX Records", "Sockets", "npm", "Network Programming"],
-    githubUrl: null as string | null,
+    githubUrl: "https://github.com/sandeep226032/smtp-email-verifier.git",
     demoUrl: null as string | null,
-    packageUrl: null as string | null,
+    packageUrl: "https://www.npmjs.com/package/sn-smptp-email-verifier",
   },
   {
     num: "04",
-    featured: false,
-    name: "Bus Manzil",
-    tagline: "College Exhibition Project · 2024",
-    desc: "A transportation-focused web application addressing campus mobility, exhibited at the College Project Exhibition (2024) alongside StudHive.",
+    featured: true,
+    name: "StudHive",
+    tagline: "Campus communication platform",
+    desc: "A full-stack social platform for college communities to share updates, announcements, and resources with secure user access.",
     problem:
-      "Students needed clearer access to transport and route-oriented information around campus mobility.",
-    role: "Built the web experience and project presentation flow for exhibition review.",
-    impact: "Turned a campus mobility idea into a working academic product demo.",
-    metrics: ["Exhibited", "Transport UX", "Web App"],
-    features: [],
-    stack: ["Web Development"],
-    githubUrl: "https://github.com/sandeep226032/BusManzil",
+      "College updates were scattered across informal channels, making discovery, moderation, and admin control difficult.",
+    role:
+      "Designed and built the full-stack architecture, REST APIs, authentication flow, student/admin access, and update discovery experience.",
+    architecture:
+      "React frontend -> Node.js/Express REST API -> JWT auth and RBAC middleware -> MongoDB persistence -> search and filter workflows.",
+    challenges:
+      "Designing clear access boundaries between students and admins while keeping the product easy to use on mobile.",
+    result:
+      "Built a focused campus communication product with secure access control and responsive workflows.",
+    metrics: ["JWT Auth", "RBAC", "MERN"],
+    features: [
+      "JWT-based authentication with secure session management",
+      "Role-based access control separating student and admin views",
+      "Search and filtering for relevant college updates",
+      "Responsive UI optimized for mobile and desktop",
+    ],
+    stack: ["React.js", "Node.js", "Express.js", "MongoDB", "JWT", "REST API"],
+    githubUrl: "https://github.com/sandeep226032/StudHiveFrontend",
     demoUrl: null as string | null,
     packageUrl: null as string | null,
   },
@@ -96,341 +122,131 @@ const projects = [
 
 type Project = (typeof projects)[number];
 
-function Links({
-  github,
-  demo,
-  packageUrl,
-  name,
-}: {
-  github: string | null;
-  demo: string | null;
-  packageUrl: string | null;
-  name: string;
-}) {
-  const base = { color: "var(--text-muted)", borderColor: "var(--border)" };
-  const on = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    const el = e.currentTarget;
-    el.style.color = "var(--gold)";
-    el.style.borderColor = "var(--gold-mid)";
-  };
-  const off = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    const el = e.currentTarget;
-    el.style.color = base.color;
-    el.style.borderColor = base.borderColor;
-  };
+function ProjectLinks({ project }: { project: Project }) {
+  const linkClass =
+    "flex h-[42px] w-[42px] items-center justify-center rounded-[10px] border transition-all duration-300 hover:scale-[1.05] active:scale-[0.95]";
 
-  if (!github && !demo && !packageUrl) return null;
+  const style = { 
+    borderColor: "var(--border-hover)", 
+    background: "var(--surface-dim)",
+    color: "var(--text)"
+  };
 
   return (
-    <div className="flex flex-wrap gap-3">
-      {github && (
-        <a
-          href={github}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="font-mono text-[0.68rem] tracking-[0.06em] uppercase no-underline border px-[0.85rem] py-[0.4rem] rounded-[2px] inline-flex items-center gap-2 transition-all duration-200"
-          style={base}
-          onMouseEnter={on}
-          onMouseLeave={off}
-          aria-label={`GitHub for ${name}`}
-        >
-          <Github size={12} aria-hidden="true" />
-          GitHub
+    <div className="flex gap-2.5">
+      {project.githubUrl ? (
+        <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className={linkClass} style={style} title="View Source">
+          <Github size={19} strokeWidth={2} aria-hidden="true" />
         </a>
+      ) : (
+        <div className={linkClass} style={{ ...style, opacity: 0.4 }} title="Private Repository">
+          <Lock size={17} strokeWidth={2} aria-hidden="true" />
+        </div>
       )}
-      {demo && (
-        <a
-          href={demo}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="font-mono text-[0.68rem] tracking-[0.06em] uppercase no-underline border px-[0.85rem] py-[0.4rem] rounded-[2px] inline-flex items-center gap-2 transition-all duration-200"
-          style={base}
-          onMouseEnter={on}
-          onMouseLeave={off}
-          aria-label={`Live demo for ${name}`}
+      {(project.demoUrl || project.packageUrl) && (
+        <a 
+          href={(project.demoUrl || project.packageUrl) as string} 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          className={linkClass} 
+          style={style} 
+          title="View Live"
         >
-          <ExternalLink size={12} aria-hidden="true" />
-          Live Demo
-        </a>
-      )}
-      {packageUrl && (
-        <a
-          href={packageUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="font-mono text-[0.68rem] tracking-[0.06em] uppercase no-underline border px-[0.85rem] py-[0.4rem] rounded-[2px] inline-flex items-center gap-2 transition-all duration-200"
-          style={base}
-          onMouseEnter={on}
-          onMouseLeave={off}
-          aria-label={`npm package for ${name}`}
-        >
-          <ExternalLink size={12} aria-hidden="true" />
-          npm
+          <ExternalLink size={19} strokeWidth={2} aria-hidden="true" />
         </a>
       )}
     </div>
   );
 }
 
-function CaseRows({ project }: { project: Project }) {
-  return (
-    <div className="grid gap-3 mb-5 md:grid-cols-3">
-      {[
-        ["Problem", project.problem],
-        ["Role", project.role],
-        ["Impact", project.impact],
-      ].map(([label, value]) => (
-        <div
-          key={label}
-          className="rounded-[4px] border p-4"
-          style={{ background: "var(--surface-dim)", borderColor: "var(--border)" }}
-        >
-          <p
-            className="font-mono text-[0.6rem] uppercase tracking-[0.1em] mb-2"
-            style={{ color: "var(--gold)" }}
-          >
-            {label}
-          </p>
-          <p className="text-[0.8rem] leading-[1.65]" style={{ color: "var(--text-muted)" }}>
-            {value}
-          </p>
-        </div>
-      ))}
-    </div>
-  );
-}
-
-function ProjectPreview({ project }: { project: Project }) {
-  return (
-    <aside
-      className="rounded-[4px] border p-5 font-mono text-[0.72rem] leading-[1.9] self-start min-w-[240px]"
-      style={{ background: "var(--bg)", borderColor: "var(--border)", color: "var(--text-dim)" }}
-      aria-label={`${project.name} implementation preview`}
-    >
-      <div className="mb-4 flex items-center justify-between">
-        <p className="font-mono text-[0.65rem] tracking-[0.1em] uppercase" style={{ color: "var(--gold)" }}>
-          case-study.json
-        </p>
-        <span className="h-2 w-2 rounded-full" style={{ background: "var(--sage)" }} />
-      </div>
-      {[
-        ["project", project.name],
-        ["role", "Full Stack"],
-        [
-          "backend",
-          project.stack.includes("FastAPI")
-            ? "FastAPI"
-            : project.stack.includes("SMTP")
-              ? "Node/npm"
-              : project.stack.includes("Node.js")
-                ? "Node + Express"
-                : "Web App",
-        ],
-        [
-          "database",
-          project.stack.includes("Vector DB")
-            ? "Vector DB"
-            : project.stack.includes("MongoDB")
-              ? "MongoDB"
-              : "Planned",
-        ],
-        ["focus", project.metrics[0]],
-      ].map(([k, v]) => (
-        <div key={k}>
-          <span style={{ color: "var(--sage)" }}>&quot;{k}&quot;</span>:{" "}
-          <span style={{ color: "var(--text-muted)" }}>&quot;{v}&quot;</span>,
-        </div>
-      ))}
-      <div className="mt-5 flex flex-col gap-2">
-        {project.metrics.map((metric, i) => (
-          <motion.div
-            key={metric}
-            initial={{ width: "35%" }}
-            whileInView={{ width: `${72 + i * 8}%` }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] }}
-            className="h-[3px] rounded-full"
-            style={{ background: i % 2 === 0 ? "var(--gold)" : "var(--sage)" }}
-          />
-        ))}
-      </div>
-    </aside>
-  );
-}
-
-function FeaturedCard({ project }: { project: Project }) {
+function ProjectItem({ project, index }: { project: Project; index: number }) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <motion.div
+    <motion.article
       ref={ref}
-      initial={{ opacity: 0, y: 24 }}
+      initial={{ opacity: 0, y: 18 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.55, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
+      className="border-b px-6 py-8 sm:px-8 sm:py-10 last:border-b-0"
+      style={{ borderColor: "var(--border)" }}
     >
-      <TiltSpotlightCard className="p-8 transition-colors duration-300">
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_280px] lg:items-start">
-          <div>
-          <p className="font-mono text-[0.65rem] tracking-[0.1em] uppercase mb-2" style={{ color: "var(--text-dim)" }}>
-            {project.num} / Featured
-          </p>
-          <h3 className="font-head font-bold text-[1.4rem] tracking-tight mb-1" style={{ color: "var(--text)" }}>
-            {project.name}
-          </h3>
-          <p className="font-mono text-[0.7rem] tracking-[0.06em] uppercase mb-4" style={{ color: "var(--gold)" }}>
+      <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
+        <div className="flex-1 min-w-0">
+          <div className="flex items-center gap-2.5 mb-1.5">
+            <h3 className="font-head text-[1.3rem] font-extrabold leading-tight tracking-tight sm:text-[1.5rem]" style={{ color: "var(--text)" }}>
+              {project.name}
+            </h3>
+            <Sparkles size={18} className="shrink-0" style={{ color: "var(--gold)" }} aria-hidden="true" />
+          </div>
+          
+          <p className="font-mono text-[0.75rem] uppercase tracking-[0.1em] mb-4" style={{ color: "var(--gold)" }}>
             {project.tagline}
           </p>
-          <p className="text-[0.9rem] leading-[1.75] mb-5" style={{ color: "var(--text-muted)" }}>
+
+          <p className="text-[0.98rem] leading-[1.8] max-w-[700px] mb-6" style={{ color: "var(--text-muted)" }}>
             {project.desc}
           </p>
 
-          <CaseRows project={project} />
-
-          {project.features.length > 0 && (
-            <ul className="flex flex-col gap-2 mb-5" aria-label="Key features">
-              {project.features.map((feature) => (
-                <li key={feature} className="text-[0.825rem] pl-4 relative list-none" style={{ color: "var(--text-muted)" }}>
-                  <span className="absolute left-0 text-[0.7rem]" style={{ color: "var(--gold)" }} aria-hidden="true">
-                    ▸
-                  </span>
-                  {feature}
-                </li>
-              ))}
-            </ul>
-          )}
-
-          <div className="flex flex-wrap gap-2 pt-4 border-t mb-5" style={{ borderColor: "var(--border)" }}>
-            {project.stack.map((item) => (
+          <div className="flex flex-wrap gap-2" aria-label={`${project.name} technologies`}>
+            {project.stack.map((tag) => (
               <span
-                key={item}
-                className="font-mono text-[0.62rem] tracking-[0.06em] uppercase px-[0.65rem] py-[0.22rem] rounded-[2px] border bg-[var(--surface-dim)]"
-                style={{ color: "var(--sage)", borderColor: "rgba(90,143,123,0.2)" }}
+                key={tag}
+                className="rounded-full border px-3.5 py-1 text-[0.72rem] font-medium transition-all duration-200"
+                style={{ 
+                  color: "var(--text-muted)", 
+                  borderColor: "var(--border)", 
+                  background: "rgba(255,255,255,0.03)" 
+                }}
               >
-                {item}
+                {tag}
               </span>
             ))}
           </div>
-          <Links
-            github={project.githubUrl}
-            demo={project.demoUrl}
-            packageUrl={project.packageUrl}
-            name={project.name}
-          />
-          </div>
-
-          <ProjectPreview project={project} />
-        </div>
-      </TiltSpotlightCard>
-    </motion.div>
-  );
-}
-
-function StandardCard({ project, delay }: { project: Project; delay: number }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
-
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 24 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
-    >
-      <TiltSpotlightCard className="flex flex-col p-8 transition-colors duration-300 h-full">
-        <div className="mb-5 flex items-start justify-between gap-5">
-          <div>
-            <p className="font-mono text-[0.65rem] tracking-[0.1em] uppercase mb-2" style={{ color: "var(--text-dim)" }}>
-              {project.num}
-            </p>
-            <h3 className="font-head font-bold text-[1.2rem] tracking-tight mb-1" style={{ color: "var(--text)" }}>
-              {project.name}
-            </h3>
-            <p className="font-mono text-[0.7rem] tracking-[0.06em] uppercase" style={{ color: "var(--gold)" }}>
-              {project.tagline}
-            </p>
-          </div>
-          <ArrowRight
-            size={18}
-            className="mt-1 transition-transform duration-300 group-hover:translate-x-1"
-            style={{ color: "var(--text-dim)" }}
-          />
         </div>
 
-        <p className="text-[0.9rem] leading-[1.75] mb-5" style={{ color: "var(--text-muted)" }}>
-          {project.desc}
-        </p>
-        <CaseRows project={project} />
-        <div className="flex flex-wrap gap-2 pt-4 border-t mb-5" style={{ borderColor: "var(--border)" }}>
-          {project.stack.map((item) => (
-            <span
-              key={item}
-              className="font-mono text-[0.62rem] tracking-[0.06em] uppercase px-[0.65rem] py-[0.22rem] rounded-[2px] border bg-[var(--surface-dim)]"
-              style={{ color: "var(--sage)", borderColor: "rgba(90,143,123,0.2)" }}
-            >
-              {item}
-            </span>
-          ))}
+        <div className="shrink-0 sm:pt-1">
+          <ProjectLinks project={project} />
         </div>
-        <Links
-          github={project.githubUrl}
-          demo={project.demoUrl}
-          packageUrl={project.packageUrl}
-          name={project.name}
-        />
-      </TiltSpotlightCard>
-    </motion.div>
+      </div>
+    </motion.article>
   );
 }
 
 export default function Projects() {
-  const headerRef = useRef<HTMLDivElement>(null);
-  const headerInView = useInView(headerRef, { once: true, margin: "-80px" });
+  const ref = useRef<HTMLElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="projects" className="max-w-[1100px] mx-auto px-10 py-24" aria-labelledby="projects-heading">
-      <div ref={headerRef}>
-        <motion.p
+    <section
+      id="projects"
+      ref={ref}
+      className="px-5 py-20 sm:px-6 md:px-10 lg:py-24"
+      aria-labelledby="projects-heading"
+    >
+      <div className="mx-auto max-w-[960px]">
+        <motion.div
           initial={{ opacity: 0, y: 16 }}
-          animate={headerInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="font-mono text-[0.7rem] tracking-[0.14em] uppercase mb-3 flex items-center gap-3"
-          style={{ color: "var(--gold)" }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+          className="border-b py-6"
+          style={{ borderColor: "var(--border)" }}
         >
-          <span className="w-6 h-[1px] inline-block flex-shrink-0" style={{ background: "var(--gold)" }} aria-hidden="true" />
-          Projects
-        </motion.p>
-        <motion.h2
-          id="projects-heading"
-          initial={{ opacity: 0, y: 16 }}
-          animate={headerInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="font-head font-extrabold tracking-tight leading-[1.05] mb-4"
-          style={{ fontSize: "clamp(2rem, 4vw, 3rem)", color: "var(--text)" }}
-        >
-          Built from scratch.
-          <br />
-          <span style={{ color: "var(--text-muted)" }}>Told like case studies.</span>
-        </motion.h2>
-        <motion.p
-          initial={{ opacity: 0, y: 16 }}
-          animate={headerInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-[1rem] leading-[1.75] max-w-[560px] mb-14"
-          style={{ color: "var(--text-muted)" }}
-        >
-          Projects framed around the problem, my role, and the engineering impact behind the build.
-        </motion.p>
-      </div>
+          <h2
+            id="projects-heading"
+            className="font-head text-[2rem] font-extrabold leading-tight tracking-tight sm:text-[2.5rem]"
+            style={{ color: "var(--text)" }}
+          >
+            Projects.
+          </h2>
+        </motion.div>
 
-      <div className="flex flex-col gap-6">
-        {projects.map((project, i) =>
-          project.featured ? (
-            <FeaturedCard key={project.name} project={project} />
-          ) : (
-            <StandardCard key={project.name} project={project} delay={i * 0.1} />
-          )
-        )}
+        <div role="list" aria-label="Projects">
+          {projects.map((project, index) => (
+            <ProjectItem key={project.name} project={project} index={index} />
+          ))}
+        </div>
       </div>
     </section>
   );

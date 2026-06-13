@@ -7,14 +7,15 @@ import Link from "next/link";
 import { useActiveSection } from "@/hooks/useActiveSection";
 import ThemeToggle from "@/components/ui/ThemeToggle";
 
-const SECTION_IDS = ["about", "experience", "projects", "skills", "education", "contact"];
+const SECTION_IDS = ["about", "experience", "projects", "skills", "proof", "education", "contact"];
 
 const navLinks = [
-  { href: "#about",      label: "About" },
+  // { href: "#about",      label: "About" },
   { href: "#experience", label: "Experience" },
   { href: "#projects",   label: "Projects" },
   { href: "#skills",     label: "Skills" },
-  { href: "#education",  label: "Education" },
+  // { href: "#proof",      label: "Proof" },
+  // { href: "#education",  label: "Education" },
   { href: "#contact",    label: "Contact" },
 ];
 
@@ -110,7 +111,7 @@ export default function Nav() {
 
         {/* Desktop right actions */}
         <div className="hidden md:flex items-center gap-4">
-          <ThemeToggle />
+          {/* <ThemeToggle /> */}
 
           <a
             href="/resume_sandeep.pdf"
@@ -259,7 +260,7 @@ export default function Nav() {
                 className="px-6 py-6 border-t flex flex-col gap-3"
                 style={{ borderColor: "var(--border)" }}
               >
-                <div className="flex items-center justify-between pb-2">
+                {/* <div className="flex items-center justify-between pb-2">
                   <span
                     className="font-mono text-[0.65rem] tracking-[0.1em] uppercase"
                     style={{ color: "var(--text-dim)" }}
@@ -267,7 +268,7 @@ export default function Nav() {
                     Theme
                   </span>
                   <ThemeToggle />
-                </div>
+                </div> */}
                 <Link
                   href="#contact"
                   onClick={() => setMobileOpen(false)}

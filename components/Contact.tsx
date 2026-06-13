@@ -5,8 +5,8 @@ import { motion, useInView } from "framer-motion";
 import { CheckCircle2, Download, Github, Linkedin, LoaderCircle, Send } from "lucide-react";
 
 export default function Contact() {
-  const headerRef = useRef(null);
-  const headerInView = useInView(headerRef, { once: true, margin: "-80px" });
+  const ref = useRef<HTMLElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-80px" });
 
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
@@ -70,48 +70,33 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="max-w-[1100px] mx-auto px-6 md:px-10 py-16 md:py-24"
+      ref={ref}
+      className="px-5 py-20 sm:px-6 md:px-10 lg:py-24"
       aria-labelledby="contact-heading"
     >
-      <div ref={headerRef}>
-        <motion.p
-          initial={{ opacity: 0, y: 16 }}
-          animate={headerInView ? { opacity: 1, y: 0 } : {}}
-          className="font-mono text-[0.7rem] tracking-[0.14em] uppercase mb-3 flex items-center gap-3"
-          style={{ color: "var(--gold)" }}
-        >
-          <span className="w-6 h-[1px] inline-block" style={{ background: "var(--gold)" }} />
-          Contact
-        </motion.p>
-        <motion.h2
-          id="contact-heading"
-          initial={{ opacity: 0, y: 16 }}
-          animate={headerInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.1 }}
-          className="font-head font-extrabold tracking-tight leading-[1.05] mb-4"
-          style={{ fontSize: "clamp(2rem, 4vw, 3rem)", color: "var(--text)" }}
-        >
-          Let&apos;s work
-          <br />
-          <span style={{ color: "var(--text-muted)" }}>together.</span>
-        </motion.h2>
-        <motion.p
-          initial={{ opacity: 0, y: 16 }}
-          animate={headerInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.2 }}
-          className="text-[1rem] leading-[1.75] max-w-[520px] mb-14"
-          style={{ color: "var(--text-muted)" }}
-        >
-          Open to backend development roles, internship extensions, and collaboration. Drop me a message.
-        </motion.p>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-[1fr_1.2fr] gap-10 md:gap-16">
+      <div className="mx-auto max-w-[960px]">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={headerInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.25 }}
+          initial={{ opacity: 0, y: 16 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+          className="border-b py-6 mb-12"
+          style={{ borderColor: "var(--border)" }}
         >
+          <h2
+            id="contact-heading"
+            className="font-head text-[2rem] font-extrabold leading-tight tracking-tight sm:text-[2.5rem]"
+            style={{ color: "var(--text)" }}
+          >
+            Let&apos;s connect.
+          </h2>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_1.2fr] gap-10 md:gap-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.25 }}
+          >
           {[
             { label: "Email", value: "Sandeep_226032@saitm.org", href: "mailto:Sandeep_226032@saitm.org" },
             { label: "Phone", value: "+91 9728911658", href: "tel:+919728911658" },
@@ -199,7 +184,7 @@ export default function Contact() {
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={headerInView ? { opacity: 1, y: 0 } : {}}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ delay: 0.35 }}
           className="rounded-[4px] border p-6 md:p-8"
           style={{ background: "var(--surface)", borderColor: "var(--border)" }}
@@ -328,6 +313,7 @@ export default function Contact() {
           </form>
         </motion.div>
       </div>
+    </div>
     </section>
   );
 }
