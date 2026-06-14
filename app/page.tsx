@@ -7,6 +7,8 @@ import Hero from "@/components/Hero";
 import Experience from "@/components/Experience";
 import Projects from "@/components/Projects";
 import Skills from "@/components/Skills";
+import LeetCodeDashboard from "@/components/LeetCodeDashboard";
+import GfgDashboard from "@/components/GfgDashboard";
 // import TrustSignals from "@/components/TrustSignals";
 // import Education from "@/components/Education";
 import Contact from "@/components/Contact";
@@ -29,6 +31,10 @@ export default function Page() {
         <Projects />
         <Divider />
         <Skills />
+        <Divider />
+        <LeetCodeDashboard />
+        <Divider />
+        <GfgDashboard />
         <Divider />
         {/* <TrustSignals /> */}
         <Divider />

@@ -7,13 +7,15 @@ import Link from "next/link";
 import { useActiveSection } from "@/hooks/useActiveSection";
 import ThemeToggle from "@/components/ui/ThemeToggle";
 
-const SECTION_IDS = ["about", "experience", "projects", "skills", "proof", "education", "contact"];
+const SECTION_IDS = ["about", "experience", "projects", "skills", "leetcode", "gfg", "proof", "education", "contact"];
 
 const navLinks = [
   // { href: "#about",      label: "About" },
   { href: "#experience", label: "Experience" },
   { href: "#projects",   label: "Projects" },
   { href: "#skills",     label: "Skills" },
+  { href: "#leetcode",   label: "LeetCode" },
+  { href: "#gfg",        label: "GFG" },
   // { href: "#proof",      label: "Proof" },
   // { href: "#education",  label: "Education" },
   { href: "#contact",    label: "Contact" },
