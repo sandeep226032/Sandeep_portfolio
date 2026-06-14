@@ -98,7 +98,7 @@ export default function Contact() {
             transition={{ delay: 0.25 }}
           >
           {[
-            { label: "Email", value: "Sandeep_226032@saitm.org", href: "mailto:Sandeep_226032@saitm.org" },
+            { label: "Email", value: "devsandeepnandi@gmail.com", href: "mailto:devsandeepnandi@gmail.com" },
             { label: "Phone", value: "+91 9728911658", href: "tel:+919728911658" },
             { label: "Location", value: "India", href: null },
             { label: "Availability", value: "Open to opportunities", href: null, gold: true },

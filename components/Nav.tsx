@@ -126,7 +126,7 @@ export default function Nav() {
             Resume
           </a>
 
-          <Link
+          {/* <Link
             href="#contact"
             className="font-mono text-[0.72rem] tracking-[0.06em] uppercase no-underline px-4 py-[0.45rem] rounded-[2px] border transition-all duration-200"
             style={{ color: "var(--gold)", borderColor: "var(--gold-mid)", background: "transparent" }}
@@ -142,7 +142,7 @@ export default function Nav() {
             }}
           >
             Hire Me
-          </Link>
+          </Link> */}
         </div>
 
         {/* Hamburger */}

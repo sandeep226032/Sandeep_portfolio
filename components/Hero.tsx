@@ -17,7 +17,7 @@ const stats = [
   { value: "10+", label: "Backend/AI Tools" },
 ];
 
-const skills = ["Node.js", "Express.js", "FastAPI", "REST APIs", "LangChain", "RAG", "MongoDB", "PostgreSQL", "Docker"];
+const skills = ["Next.js", "React", "Node.js", "Express.js", "PostgreSQL", "MySQL", "MongoDB"];
 
 const actions = [
   {
@@ -176,7 +176,7 @@ export default function Hero() {
                   <ShieldCheck size={22} style={{ color: "var(--gold)" }} aria-label="Verified profile" />
                 </div>
                 <p className="mt-1 text-[1rem] font-semibold sm:text-[1.1rem]" style={{ color: "var(--text-muted)" }}>
-                  Backend Developer & AI Systems Builder
+                  Full Stack Developer & AI Systems Builder
                 </p>
               </div>
             </div>
@@ -197,14 +197,7 @@ export default function Hero() {
           style={{ borderColor: "var(--border)" }}
         >
           <p className="max-w-[860px] text-[1.08rem] leading-[1.85] sm:text-[1.18rem]" style={{ color: "var(--text-muted)" }}>
-            Hey, I&apos;m{" "}
-            <strong style={{ color: "var(--text)", fontWeight: 700 }}>Sandeep</strong> - a recent B.Tech graduate and backend-focused developer from India. I build{" "}
-            <strong style={{ color: "var(--text)", fontWeight: 700 }}>scalable APIs</strong>, authentication systems, database-backed products, and{" "}
-            <strong style={{ color: "var(--text)", fontWeight: 700 }}>AI-powered applications</strong> using FastAPI, LangChain, RAG, and vector databases.
-          </p>
-
-          <p className="mt-6 max-w-[860px] text-[1.02rem] leading-[1.85] sm:text-[1.1rem]" style={{ color: "var(--text-muted)" }}>
-            During my 5-month Backend Developer Internship, I contributed to logistics APIs, CRM workflows, admin panels, HRMS modules, third-party integrations, and production backend systems used by real teams.
+            I&apos;m <strong style={{ color: "var(--text)", fontWeight: 700 }}>Sandeep Nandi</strong>, a developer who enjoys transforming complex ideas into practical solutions. With experience in Next.js, React, Node.js, Express.js, PostgreSQL, MySQL, and MongoDB, I build applications that are reliable, efficient, and easy to maintain.
           </p>
 
           <div className="mt-7 flex flex-wrap gap-2" aria-label="Core technologies">

@@ -13,7 +13,7 @@ const experiences = [
     period: "5 Months",
     location: "India",
     description:
-      "Worked on production backend modules across logistics, CRM, real estate CMS, and HRMS systems. Built and maintained REST APIs, authentication flows, admin workflows, third-party integrations, database models, and realtime notification foundations used by internal product teams.",
+      "Contributed to production-grade backend systems for logistics, CRM, real estate CMS, and HRMS products used by internal teams and clients. Developed REST APIs, authentication flows, database architectures, and third-party integrations that streamlined business workflows, improved operational efficiency, and supported scalable product growth.",
     tags: ["Node.js", "Express.js", "REST APIs", "MongoDB", "PostgreSQL", "MySQL", "RBAC", "SSE"],
     accent: "var(--gold)",
     bg: "var(--gold-dim)",

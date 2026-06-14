@@ -23,7 +23,11 @@ const projects = [
       "Balancing simple user inputs with useful retrieval context, normalizing Drive results, and keeping the backend flow understandable.",
     result:
       "Created a practical AI assistant that turns vague file queries into contextual Drive resource recommendations.",
-    metrics: ["RAG", "FastAPI", "Vector Search"],
+    impact: [
+      { label: "Users", value: "Drive users", detail: "Built for people who remember file context but not exact names." },
+      { label: "Problem solved", value: "Faster discovery", detail: "Converts vague queries into relevant Drive file and link suggestions." },
+      { label: "Usage", value: "Demo project", detail: "Designed as a practical AI retrieval workflow for portfolio review." },
+    ],
     features: [
       "RAG-based search over file metadata and contextual inputs",
       "FastAPI backend connected to a Streamlit interface",
@@ -52,7 +56,11 @@ const projects = [
       "Managing disparate API credit systems, implementing robust error recovery with backoff, and normalizing inconsistent JSON responses.",
     result:
       "Built a production-grade CLI tool that automates lead discovery to email delivery with safety checkpoints and auditing.",
-    metrics: ["Rate Limiting", "API Pipeline", "Node.js"],
+    impact: [
+      { label: "Users", value: "Sales teams", detail: "Built for teams that manually research leads and decision-makers." },
+      { label: "Problem solved", value: "Less manual work", detail: "Automates company discovery, contact enrichment, review, and email preparation." },
+      { label: "Usage", value: "CLI workflow", detail: "Made for repeatable outreach runs with CSV reporting and safety checks." },
+    ],
     features: [
       "Multi-stage API orchestration (Ocean.io, Prospeo, Brevo)",
       "Advanced rate limiting using Bottleneck queues",
@@ -82,7 +90,11 @@ const projects = [
       "Handling SMTP provider differences, network timeouts, port restrictions, and cases where servers intentionally block verification.",
     result:
       "Published a reusable backend utility that demonstrates practical network programming beyond standard CRUD APIs.",
-    metrics: ["SMTP", "DNS/MX", "npm"],
+    impact: [
+      { label: "Users", value: "Developers", detail: "Built for backend developers who need deeper email validation." },
+      { label: "Problem solved", value: "Better checks", detail: "Goes beyond regex with DNS, MX, SMTP, socket, and timeout handling." },
+      { label: "Usage", value: "npm package", detail: "Published as a reusable package for project integration." },
+    ],
     features: [
       "DNS and MX record validation",
       "SMTP-level mailbox verification workflow",
@@ -111,7 +123,11 @@ const projects = [
       "Designing clear access boundaries between students and admins while keeping the product easy to use on mobile.",
     result:
       "Built a focused campus communication product with secure access control and responsive workflows.",
-    metrics: ["JWT Auth", "RBAC", "MERN"],
+    impact: [
+      { label: "Users", value: "Students & admins", detail: "Built for campus users who need one place for college updates." },
+      { label: "Problem solved", value: "Organized updates", detail: "Replaces scattered WhatsApp and notice workflows with searchable posts." },
+      { label: "Usage", value: "Academic demo", detail: "Presented as a full-stack campus communication product." },
+    ],
     features: [
       "JWT-based authentication with secure session management",
       "Role-based access control separating student and admin views",
@@ -271,6 +287,26 @@ function ProjectItem({ project, index }: { project: Project; index: number }) {
           <p className="text-[0.98rem] leading-[1.8] max-w-[700px] mb-6" style={{ color: "var(--text-muted)" }}>
             {project.desc}
           </p>
+
+          <div className="mb-6 grid gap-3 sm:grid-cols-3" aria-label={`${project.name} user impact`}>
+            {project.impact.map((item) => (
+              <div
+                key={`${item.label}-${item.value}`}
+                className="rounded-[6px] border p-3"
+                style={{ background: "var(--surface-dim)", borderColor: "var(--border)" }}
+              >
+                <p className="font-mono text-[0.58rem] uppercase tracking-[0.08em]" style={{ color: "var(--gold)" }}>
+                  {item.label}
+                </p>
+                <p className="mt-2 font-head text-[1rem] font-extrabold leading-tight" style={{ color: "var(--text)" }}>
+                  {item.value}
+                </p>
+                <p className="mt-2 text-[0.78rem] leading-[1.55]" style={{ color: "var(--text-dim)" }}>
+                  {item.detail}
+                </p>
+              </div>
+            ))}
+          </div>
 
           <div className="flex flex-wrap gap-2" aria-label={`${project.name} technologies`}>
             {project.stack.map((tag) => (
