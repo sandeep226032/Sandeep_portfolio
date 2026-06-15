@@ -7,7 +7,7 @@ import { ArrowUpRight, BriefcaseBusiness } from "lucide-react";
 
 const experiences = [
   {
-    role: "Full Stack Developer Intern",
+    role: "Backend Developer Intern",
     company: "MatchBest Group",
     companyUrl: null as string | null,
     period: "5 Months",
